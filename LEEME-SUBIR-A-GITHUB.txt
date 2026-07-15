@@ -61,26 +61,50 @@ QUÉ CAMBIÓ, EN RESUMEN
 - para-empresas.html tiene, todo en una sola página, con el mismo
   estilo oscuro de B House:
     1. Misión / cómo trabajamos / con quién trabajamos
-    2. Portafolio propio con tus 8 fotos de negocio (foto-1.jpg a
-       foto-8.jpg, tal cual ya las tenés)
+    2. Portafolio propio — AHORA SE ARMA SOLO (ver abajo)
     3. Menú a la carta: los 11 servicios agrupados (Video,
        Fotografía, Redes sociales, Diseño), cada uno con su
        propio botón "Cotizar" que abre WhatsApp con ese servicio
-       ya escrito — igual que tenías en el sitio viejo, pero con
-       el estilo de B House.
+       ya escrito.
     4. Los 3 paquetes (Emprendedor / Negocio / Premium), cada uno
        con su botón para cotizar por WhatsApp.
-- El botón "Cotizar" del menú y el botón flotante de esa página
-  bajan directo al menú a la carta (no van a la Agenda de música).
-- portafolio.html (el de música) queda igual que antes — las fotos
-  de negocio NO están ahí, viven solo en para-empresas.html.
-- Todo el texto/precios de negocios sigue centralizado en
-  assets/config.js (businessMission, businessPortfolio,
-  businessServices, businessPackages) — para cambiar un precio o
-  texto, es ahí.
-- Se corrigió también un detalle chiquito: el aviso "Falta imagen"
-  ahora se ve bien en TODAS las fotos tipo Polaroid (antes solo
-  funcionaba en las de video), en assets/styles.css.
+- Las fotos del portafolio de negocios ahora se pueden abrir en
+  grande al hacer click (antes no abrían nada).
+
+⭐ NUEVO: FOTOS QUE SE AGREGAN SOLAS, SIN TOCAR CÓDIGO
+--------------------------------------------------------
+Ya no hace falta editar assets/config.js para agregar fotos al
+portafolio de negocios NI a ciertas categorías del portafolio de
+música. El sitio revisa solo si existe el archivo con el nombre
+correcto y lo agrega automáticamente.
+
+  PORTAFOLIO DE NEGOCIOS (para-empresas.html)
+  Subí a tu img/ de siempre:  foto-1.jpg, foto-2.jpg, foto-3.jpg...
+  (así seguidos, sin saltarte números) y van a aparecer solas, en
+  ese orden. Ahora mismo ya tenés foto-1.jpg a foto-8.jpg — nada
+  que hacer, ya deberían verse.
+
+  PORTAFOLIO DE MÚSICA (portafolio.html) — 3 categorías nuevas
+  con auto-detección (se SUMAN a las fotos que ya tenías
+  curadas a mano, no las reemplazan):
+    fotografia-1.jpg, fotografia-2.jpg...  → categoría Fotografía
+    retrato-1.jpg, retrato-2.jpg...        → categoría Detrás de cámaras
+    portafolio-1.jpg, portafolio-2.jpg...  → categoría Sesiones
+
+  Reglas importantes:
+  - Los nombres van en minúscula y sin tildes, tal cual arriba.
+  - Tienen que ir SEGUIDOS (1, 2, 3, 4…) — si subís foto-1.jpg y
+    foto-3.jpg pero no foto-2.jpg, van a aparecer las dos igual
+    (el sitio revisa cada número del 1 al 40, no se detiene en el
+    primer hueco), así que en la práctica no pasa nada grave si te
+    saltás un número, pero es más prolijo ir en orden.
+  - ⚠️ Esta magia SOLO funciona en el sitio ya publicado en GitHub
+    Pages (https://...github.io/...) — si abrís el archivo local
+    haciendo doble clic en tu compu, esta parte no va a funcionar
+    (mismo motivo por el que los videos de YouTube tampoco suenan
+    en local, ver README: el navegador bloquea estos chequeos en
+    archivos locales, no es un error).
+  - Formatos aceptados: .jpg y .jpeg.
 
 PENDIENTES QUE QUEDAN IGUAL (no tocados en este zip)
 -----------------------------------------------------

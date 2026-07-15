@@ -260,6 +260,36 @@
   </div>
 </section>
 
+<!-- MODAL DE FOTOS (portafolio de negocios) -->
+<div id="portfolioModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-ink/90 backdrop-blur-md px-4">
+  <button id="modalClose" class="absolute top-6 right-6 w-11 h-11 rounded-full glass flex items-center justify-center" aria-label="Cerrar">✕</button>
+  <div class="max-w-4xl w-full">
+    <div class="tv-frame hidden" id="modalTvFrame">
+      <div class="tv-antenna"></div>
+      <div class="tv-screen aspect-video w-full bg-black overflow-hidden" id="modalMediaWrap"></div>
+      <div class="tv-bezel-bottom">
+        <span class="tv-brand">B HOUSE TV</span>
+        <span class="tv-speaker"></span>
+        <div class="tv-controls">
+          <span class="tv-led"></span>
+          <div>
+            <span class="tv-knob-volume"></span>
+            <p class="tv-knob-label">VOL</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-polaroid mx-auto" id="modalPhotoFrame">
+      <div class="modal-polaroid-photo" id="modalPhotoWrap"></div>
+      <img src="img/firma.png" alt="B House Music" class="modal-polaroid-signature" onerror="this.style.display='none';">
+    </div>
+    <div class="mt-4">
+      <h3 id="modalTitle" class="fx-serif text-2xl uppercase"></h3>
+      <p id="modalDesc" class="text-bone/60 text-sm mt-1"></p>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer class="border-t border-line py-14">
   <div class="mx-auto max-w-7xl px-5 md:px-8 flex flex-col md:flex-row md:items-start justify-between gap-10">

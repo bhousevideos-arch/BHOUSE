@@ -5,17 +5,9 @@ const CONFIG = {
     {icon:'⏱️', title:'Cómo trabajamos', desc:'Rápido, claro y sin vueltas: cotización clara, fecha de grabación y entrega puntual.'},
     {icon:'🤝', title:'Con quién trabajamos', desc:'Restaurantes, tiendas, gimnasios, clínicas, hoteles, Airbnb, bienes raíces y emprendedores en todo Costa Rica.'},
   ],
-  // Fotos reales de trabajos para negocios — viven SOLO en para-empresas.html
-  businessPortfolio: [
-    {title:'Fotografía comercial — Negocio 1', img:'img/foto-1.jpg'},
-    {title:'Fotografía comercial — Negocio 2', img:'img/foto-2.jpg'},
-    {title:'Fotografía comercial — Negocio 3', img:'img/foto-3.jpg'},
-    {title:'Fotografía comercial — Negocio 4', img:'img/foto-4.jpg'},
-    {title:'Fotografía comercial — Negocio 5', img:'img/foto-5.jpg'},
-    {title:'Fotografía comercial — Negocio 6', img:'img/foto-6.jpg'},
-    {title:'Fotografía comercial — Negocio 7', img:'img/foto-7.jpg'},
-    {title:'Fotografía comercial — Negocio 8', img:'img/foto-8.jpg'},
-  ],
+  // Fotos de negocio: se detectan solas desde img/foto-1.jpg, foto-2.jpg... (ver assets/app.js, discoverPhotos)
+  // No hace falta editar nada acá — subí la foto con el nombre correcto y aparece.
+
   // Menú a la carta — agrupado por categoría, cada uno con su propio botón "Cotizar"
   businessServices: [
     {group:'Video', icon:'🎬', title:'Video Reel Express', price:'₡15.000', desc:'Video corto para redes, listo para publicar.'},

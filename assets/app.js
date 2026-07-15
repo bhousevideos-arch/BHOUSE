@@ -1,3 +1,27 @@
+/* ============ AUTO-DESCUBRIMIENTO DE FOTOS POR NOMBRE DE ARCHIVO ============
+   Subís una foto a img/ con el nombre y número correctos (ej. foto-9.jpg) y
+   aparece sola en el sitio, sin tocar config.js ni ningún código.
+   ⚠️ Esto SOLO funciona en el sitio ya publicado (GitHub Pages) — al abrir el
+   archivo local con doble clic (file:///...) el navegador bloquea este chequeo,
+   igual que pasa con los videos de YouTube (ver README).
+*/
+function fileExists(url) {
+  return fetch(url, { method: 'HEAD' })
+    .then(res => (res.ok ? url : null))
+    .catch(() => null);
+}
+function discoverPhotos(prefix, folder, exts, max) {
+  const checks = [];
+  for (let i = 1; i <= max; i++) {
+    let attempt = Promise.resolve(null);
+    exts.forEach(ext => {
+      attempt = attempt.then(found => found || fileExists(`${folder}/${prefix}${i}.${ext}`));
+    });
+    checks.push(attempt.then(url => (url ? { index: i, img: url } : null)));
+  }
+  return Promise.all(checks).then(results => results.filter(Boolean));
+}
+
 /* ============ LOADER ============ */
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
@@ -89,27 +113,33 @@ if (businessMissionGrid && typeof CONFIG !== 'undefined' && CONFIG.businessMissi
   setTimeout(() => document.querySelectorAll('#businessMissionGrid .reveal').forEach(el => io.observe(el)), 50);
 }
 
-// Portafolio de negocios: fotos reales, tomadas de img/ (CONFIG.businessPortfolio)
+// Portafolio de negocios: auto-descubre img/foto-1.jpg, foto-2.jpg... (hasta 40) — no hace falta editar config.js
 const businessPortfolioGrid = document.getElementById('businessPortfolioGrid');
-if (businessPortfolioGrid && typeof CONFIG !== 'undefined' && CONFIG.businessPortfolio) {
-  CONFIG.businessPortfolio.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'reveal in polaroid cursor-pointer';
-    div.style.setProperty('--tilt', (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 2 + 1) + 'deg');
-    div.innerHTML = `
-      <div class="aspect-square overflow-hidden bg-[#141414] relative">
-        <img src="${item.img}" loading="lazy" alt="${item.title}" class="w-full h-full object-cover" onerror="this.closest('.polaroid').classList.add('img-missing'); this.remove();">
-        <div class="img-placeholder hidden absolute inset-0 items-center justify-center border border-dashed border-black/15 bg-[#e5e4e0] text-center px-4">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">Falta imagen<br>${item.img}</span>
+if (businessPortfolioGrid) {
+  discoverPhotos('foto-', 'img', ['jpg', 'jpeg'], 40).then(found => {
+    if (!found.length) {
+      businessPortfolioGrid.innerHTML = `<p class="col-span-full text-bone/40 text-sm font-mono">Todavía no hay fotos. Subí archivos a <code>img/</code> con el nombre <code>foto-1.jpg</code>, <code>foto-2.jpg</code>… y van a aparecer solas acá.</p>`;
+      return;
+    }
+    found.forEach(f => {
+      const item = { title: `Fotografía comercial — Negocio ${f.index}`, img: f.img, desc: '' };
+      const div = document.createElement('div');
+      div.className = 'reveal in polaroid cursor-pointer';
+      div.style.setProperty('--tilt', (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 2 + 1) + 'deg');
+      div.innerHTML = `
+        <div class="aspect-square overflow-hidden bg-[#141414] relative">
+          <img src="${item.img}" loading="lazy" alt="${item.title}" class="w-full h-full object-cover">
         </div>
-      </div>
-      <div class="polaroid-footer">
-        <p class="polaroid-caption">${item.title}</p>
-        <img src="img/firma.png" alt="B House Music" class="polaroid-signature" onerror="this.remove();">
-      </div>`;
-    businessPortfolioGrid.appendChild(div);
+        <div class="polaroid-footer">
+          <p class="polaroid-caption">${item.title}</p>
+          <img src="img/firma.png" alt="B House Music" class="polaroid-signature" onerror="this.remove();">
+        </div>`;
+      div.addEventListener('click', () => openModal(item));
+      businessPortfolioGrid.appendChild(div);
+    });
   });
 }
+
 
 // Menú a la carta: agrupado por categoría, cada servicio con su propio botón "Cotizar"
 const businessMenuWrap = document.getElementById('businessMenuWrap');
@@ -391,6 +421,31 @@ if (portfolioGrid) {
       renderPortfolio('videos');
     });
   }
+}
+
+// Auto-descubrimiento de fotos de música: subí una foto con el nombre correcto
+// (ej. fotografia-3.jpg) y se agrega sola a la categoría correspondiente, sin
+// tocar config.js. No reemplaza a los items ya curados manualmente, se suman.
+if (portfolioGrid && typeof CONFIG !== 'undefined') {
+  const musicAutoGroups = [
+    {prefix:'fotografia-', cat:'photo',    label:'Fotografía'},
+    {prefix:'retrato-',    cat:'bts',      label:'Retrato'},
+    {prefix:'portafolio-', cat:'sessions', label:'Sesión'},
+  ];
+  Promise.all(musicAutoGroups.map(g =>
+    discoverPhotos(g.prefix, 'img', ['jpg', 'jpeg'], 30).then(found =>
+      found.map(f => ({ cat: g.cat, title: `${g.label} ${f.index}`, img: f.img }))
+    )
+  )).then(groupsResults => {
+    let added = 0;
+    groupsResults.forEach(items => {
+      if (items.length) { CONFIG.portfolio = CONFIG.portfolio.concat(items); added += items.length; }
+    });
+    if (added) {
+      const activeBtn = document.querySelector('.filter-btn.active');
+      renderPortfolio(activeBtn ? activeBtn.dataset.filter : 'videos');
+    }
+  });
 }
 
 /* ============ FAQ (faq.html) ============ */
