@@ -17,9 +17,8 @@ archivo → ícono de basura → Commit changes):
   ❌ LEEME-PRIMERO.txt
 
   ⚠️ Antes de borrar empresas/img/foto-1.jpg, guardala en tu compu —
-  es la única foto real de negocio que subiste. Ese archivo lo vas a
-  volver a subir después, pero con el nombre "negocio-1.jpg" (ver
-  paso 3).
+  es la única foto real de negocio que subiste. La vas a volver a
+  subir después, pero con el nombre "negocio-1.jpg" (ver Paso 3).
 
 PASO 2 — SUBIR estos archivos (Add file → Upload files)
 ------------------------------------------------------
@@ -28,45 +27,57 @@ ya existe con el mismo nombre:
 
   index.html, servicios.html, portafolio.html, precios.html,
   faq.html, contacto.html, premios.html   ← reemplazan a los actuales
-  cotizacion.html                          ← página NUEVA
+  para-empresas.html                       ← página NUEVA
   assets/config.js, assets/app.js          ← reemplazan a los actuales
-  assets/styles.css                        ← no cambió, pero subila igual
+  assets/styles.css                        ← reemplaza (un ajuste chiquito)
 
   (LEEME-SUBIR-A-GITHUB.txt no hace falta subirlo, es solo para vos)
 
+Si en tu repo quedó un "cotizacion.html" de una versión anterior que
+te pasé, borralo también — ya no se usa, todo quedó dentro de
+para-empresas.html.
+
 PASO 3 — Fotos de negocio en img/ (raíz, junto a las de música)
 ------------------------------------------------------------------
-Ya NO van dentro de una carpeta "empresas" — van sueltas en tu img/
-de siempre, con estos nombres exactos (los usa la pestaña "Trabajo
-comercial" del portafolio):
+Van sueltas en tu img/ de siempre (nada de carpeta aparte), con
+estos nombres exactos — los usa el portafolio de para-empresas.html:
 
   negocio-1.jpg   ← esta es la que ya tenías como "foto-1.jpg",
                      solo renombrala
   negocio-2.jpg  negocio-3.jpg  negocio-4.jpg  negocio-5.jpg
   negocio-6.jpg  negocio-7.jpg  negocio-8.jpg
 
-Mientras no subas alguna, el sitio va a mostrar una cajita gris que
-dice "Falta imagen: negocio-N.jpg" en esa foto — no rompe nada.
+Mientras no subas alguna, se ve una cajita gris que dice "Falta
+imagen: negocio-N.jpg" en esa foto — no rompe nada.
 
 QUÉ CAMBIÓ, EN RESUMEN
 -----------------------
-- El link "🏢 Para Empresas" del menú (en las 7 páginas) ahora lleva
-  a servicios.html#negocios — una sección nueva DENTRO de la misma
-  página de servicios, no un sitio aparte.
-- Esa sección tiene: misión/con quién trabajás, los 11 servicios de
-  negocio con precio, los 3 paquetes (Emprendedor/Negocio/Premium), y
-  un botón "Solicitar cotización rápida" que lleva a la página nueva
-  cotizacion.html.
-- cotizacion.html es el formulario con checkboxes que ya tenías en
-  cotizar.html, con el mismo diseño oscuro del resto del sitio, y
-  manda el mensaje directo a tu WhatsApp (7016-6631).
-- Las 8 fotos de negocio ahora son parte de la pestaña "Trabajo
-  comercial" del portafolio (portafolio.html) — no hay portafolio
-  aparte para empresas, es el mismo portafolio de siempre con más
-  fotos adentro.
-- Todo el texto (precios, servicios, misión) vive en
-  assets/config.js, igual que el resto del sitio — si querés
-  cambiar un precio o un texto, es ahí.
+- El link "🏢 Para Empresas" del menú (en las 7 páginas de música)
+  ahora lleva a una página nueva y separada: para-empresas.html —
+  NO es una carpeta ni un sitio aparte, es un .html suelto más,
+  igual que servicios.html o contacto.html.
+- para-empresas.html tiene, todo en una sola página, con el mismo
+  estilo oscuro de B House:
+    1. Misión / cómo trabajamos / con quién trabajamos
+    2. Portafolio propio con tus 8 fotos de negocio
+    3. Menú a la carta: los 11 servicios agrupados (Video,
+       Fotografía, Redes sociales, Diseño), cada uno con su
+       propio botón "Cotizar" que abre WhatsApp con ese servicio
+       ya escrito — igual que tenías en el sitio viejo, pero con
+       el estilo de B House.
+    4. Los 3 paquetes (Emprendedor / Negocio / Premium), cada uno
+       con su botón para cotizar por WhatsApp.
+- El botón "Cotizar" del menú y el botón flotante de esa página
+  bajan directo al menú a la carta (no van a la Agenda de música).
+- portafolio.html (el de música) queda igual que antes — las fotos
+  de negocio NO están ahí, viven solo en para-empresas.html.
+- Todo el texto/precios de negocios sigue centralizado en
+  assets/config.js (businessMission, businessPortfolio,
+  businessServices, businessPackages) — para cambiar un precio o
+  texto, es ahí.
+- Se corrigió también un detalle chiquito: el aviso "Falta imagen"
+  ahora se ve bien en TODAS las fotos tipo Polaroid (antes solo
+  funcionaba en las de video), en assets/styles.css.
 
 PENDIENTES QUE QUEDAN IGUAL (no tocados en este zip)
 -----------------------------------------------------
@@ -74,11 +85,12 @@ PENDIENTES QUE QUEDAN IGUAL (no tocados en este zip)
 - Tienda de beats (Gumroad/Payhip).
 - Años pendientes de los ~14 videos originales.
 - Fotos faltantes en img/ para "Contenido comercial — Marca" y
-  "Spot audiovisual" (portfolio-5.jpg y portfolio-9.jpg).
+  "Spot audiovisual" (portfolio-5.jpg y portfolio-9.jpg, en el
+  portafolio de MÚSICA — son distintas de las de negocio).
 
 SI ALGO SE VE RARO DESPUÉS DE SUBIR
 ------------------------------------
 Esperá 1-2 minutos y recargá con Ctrl+F5 (fuerza que no use una
-versión guardada en caché). Si el menú "Para Empresas" no lleva a
-la sección nueva, revisá que subiste el servicios.html de este zip
-(no el viejo).
+versión guardada en caché). Si el menú "Para Empresas" no abre la
+página nueva, revisá que subiste el servicios.html (y las demás)
+de este zip, no las versiones viejas.
