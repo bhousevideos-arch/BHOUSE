@@ -140,6 +140,14 @@ if (businessPortfolioGrid) {
   });
 }
 
+// Videos de negocio: reusa la misma tarjeta con marco de TV retro que el portafolio de música
+const businessVideoGrid = document.getElementById('businessVideoGrid');
+if (businessVideoGrid && typeof CONFIG !== 'undefined' && CONFIG.businessVideos) {
+  CONFIG.businessVideos.forEach(v => {
+    businessVideoGrid.appendChild(videoCardHTML({ title: v.title, youtube: v.youtube, cat: 'negocio' }));
+  });
+}
+
 
 // Menú a la carta: agrupado por categoría, cada servicio con su propio botón "Cotizar"
 const businessMenuWrap = document.getElementById('businessMenuWrap');
