@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  SITIO: B HOUSE MUSIC  (estudio de grabacion / artistas)
+  Este archivo va en la RAIZ del repositorio (estructura plana, sin carpetas de sitio separadas)
+  URL en vivo: bhousevideos-arch.github.io/B-house-music/
+  ============================================================
+-->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="img/logo-blanco.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio | B House Music</title>
+<meta name="description" content="Videoclips, sesiones de estudio, fotografía y trabajo comercial de B House Music Audiovisual, Costa Rica.">
+<meta name="keywords" content="estudio de grabación Costa Rica, grabar música San José, mezcla y masterización, beats reggaeton, videoclip Costa Rica, B House Music">
+<meta name="author" content="B House Music">
+<link rel="canonical" href="https://bhousemusic.cr/portafolio.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Portafolio | B House Music">
+<meta property="og:description" content="Videoclips, sesiones de estudio, fotografía y trabajo comercial de B House Music Audiovisual, Costa Rica.">
+<meta property="og:image" content="https://bhousemusic.cr/og-cover.jpg">
+<meta property="og:url" content="https://bhousemusic.cr/portafolio.html">
+<meta property="og:locale" content="es_CR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portafolio | B House Music">
+<meta name="twitter:description" content="Videoclips, sesiones de estudio, fotografía y trabajo comercial de B House Music Audiovisual, Costa Rica.">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RecordingStudio",
+  "name": "B House Music",
+  "image": "https://bhousemusic.cr/og-cover.jpg",
+  "telephone": "+506-7016-6631",
+  "priceRange": "₡₡",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CR",
+    "addressLocality": "Costa Rica"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "20:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:00", "closes": "17:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/bhousemusiccr/"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "18"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { ink: '#0a0a0a', bone: '#f5f4f0', line: '#232323' },
+        fontFamily: {
+          display: ['Anton','sans-serif'],
+          sans: ['Inter','sans-serif'],
+          mono: ['JetBrains Mono','monospace']
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="antialiased">
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img src="img/logo-blanco.png" alt="B House Music" class="h-12 md:h-16 w-auto logo-invert">
+</div>
+
+<!-- SMART FLOATING CTA -->
+<a id="floatCta" href="index.html#agenda"
+   class="fixed bottom-6 right-6 z-40 flex items-center gap-2 bg-bone text-ink px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 opacity-0 pointer-events-none translate-y-3"
+   aria-label="Reservar sesión">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" id="floatCtaIcon"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V10h14zm0-12H5V6h14zM7 12h5v5H7z"/></svg>
+  <span class="text-sm font-semibold" id="floatCtaLabel">Ver disponibilidad</span>
+</a>
+
+<!-- CHATBOT BUBBLE -->
+<button id="chatBubble" aria-label="Abrir chat de ayuda"
+  class="fixed bottom-24 right-6 z-40 w-14 h-14 rounded-full bg-bone text-ink shadow-2xl flex items-center justify-center hover:scale-105 transition-transform">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" id="chatIconOpen"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" id="chatIconClose"><path d="M18 6 6 18M6 6l12 12"/></svg>
+</button>
+
+<!-- CHATBOT PANEL -->
+<div id="chatPanel" class="fixed z-40 bottom-24 right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] h-[min(640px,74dvh)] rounded-3xl glass shadow-2xl flex-col overflow-hidden hidden">
+  <div class="px-5 py-4 border-b border-bone/10 flex items-center gap-3">
+    <div class="w-9 h-9 rounded-full bg-bone flex items-center justify-center fx-serif text-ink text-sm shrink-0">B</div>
+    <div class="flex-1 min-w-0">
+      <p class="text-sm font-semibold">Asistente B House</p>
+      <p class="text-bone/40 text-xs">Responde según nuestras FAQ · en línea</p>
+    </div>
+    <button id="chatCloseBtn" type="button" aria-label="Cerrar chat" class="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center shrink-0 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="chatMessages" class="flex-1 overflow-y-auto px-4 py-4 space-y-3 text-[15px] leading-relaxed"></div>
+  <div id="chatQuickReplies" class="px-4 pb-3 flex flex-wrap gap-2 max-h-[38%] overflow-y-auto shrink-0"></div>
+  <form id="chatForm" class="border-t border-bone/10 p-3 flex gap-2 shrink-0">
+    <input id="chatInput" type="text" autocomplete="off" placeholder="Escribe tu pregunta…"
+      class="flex-1 bg-transparent border border-bone/15 rounded-full px-4 py-2.5 text-sm outline-none focus:border-bone/40 transition-colors">
+    <button type="submit" class="w-10 h-10 rounded-full bg-bone text-ink flex items-center justify-center shrink-0" aria-label="Enviar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+    </button>
+  </form>
+</div>
+
+<!-- MINI PLAYER -->
+<button id="playerLauncher" aria-label="Escuchar B House Music"
+  class="fixed bottom-[168px] right-6 z-40 w-14 h-14 rounded-full glass shadow-2xl flex items-center justify-center hover:scale-105 transition-transform">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+</button>
+
+<div id="playerBar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100vw-2rem)] max-w-[420px] glass rounded-2xl shadow-2xl px-4 py-3 hidden items-center gap-3">
+  <img id="playerThumb" src="" alt="" class="w-11 h-11 rounded-lg object-cover shrink-0 bg-black">
+  <div class="flex-1 min-w-0">
+    <p id="playerTrackTitle" class="text-sm font-semibold truncate">—</p>
+    <p id="playerTrackArtist" class="text-bone/50 text-xs truncate">—</p>
+  </div>
+  <button id="playerPrev" aria-label="Anterior" class="w-8 h-8 shrink-0 flex items-center justify-center hover:text-bone text-bone/60">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+  </button>
+  <button id="playerToggle" aria-label="Reproducir" class="w-9 h-9 shrink-0 rounded-full bg-bone text-ink flex items-center justify-center">
+    <svg id="playerIconPlay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 translate-x-0.5" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    <svg id="playerIconPause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4 hidden" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+  </button>
+  <button id="playerNext" aria-label="Siguiente" class="w-8 h-8 shrink-0 flex items-center justify-center hover:text-bone text-bone/60">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor"><path d="M16 6h2v12h-2zM6 6l8.5 6L6 18z"/></svg>
+  </button>
+  <button id="playerClose" aria-label="Cerrar reproductor" class="w-7 h-7 shrink-0 flex items-center justify-center text-bone/40 hover:text-bone">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+<div id="ytHiddenPlayer" style="position:fixed;bottom:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;"></div>
+
+<!-- SCROLL TO TOP -->
+<button id="toTop" aria-label="Volver arriba"
+  class="fixed bottom-6 left-6 z-40 w-11 h-11 rounded-full glass flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<!-- NAV -->
+<header id="siteNav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <nav class="mx-auto max-w-7xl px-5 md:px-8 flex items-center justify-between py-4">
+    <a href="index.html" class="flex items-center gap-2.5"><img src="img/logo-blanco.png" alt="B House Music" class="h-8 w-auto logo-invert"><span class="fx-serif text-lg md:text-xl tracking-wide">B HOUSE<span class="opacity-50">.MUSIC</span></span></a>
+    <div class="hidden lg:flex items-center gap-8 text-sm font-medium">
+      <a href="servicios.html" class="hover-line">Servicios</a>
+      <a href="portafolio.html" class="hover-line">Portafolio</a>
+      <a href="precios.html" class="hover-line">Precios</a>
+      <a href="index.html#agenda" class="hover-line">Agenda</a>
+      <a href="faq.html" class="hover-line">FAQ</a>
+      <a href="contacto.html" class="hover-line">Contacto</a>
+      <a href="premios.html" class="hover-line">🏆 Premios</a>
+      <a href="servicios.html#negocios" class="hover-line">🏢 Para Empresas</a>
+    </div>
+    <a href="index.html#agenda" class="hidden lg:inline-flex items-center rounded-full bg-bone text-ink text-sm font-semibold px-5 py-2.5 hover:bg-white transition-colors">Ver disponibilidad</a>
+    <button id="menuBtn" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="Abrir menú" aria-expanded="false">
+      <span class="block w-6 h-px bg-bone transition-all" id="l1"></span>
+      <span class="block w-6 h-px bg-bone transition-all" id="l2"></span>
+      <span class="block w-6 h-px bg-bone transition-all" id="l3"></span>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 glass">
+    <div class="flex flex-col px-6 py-6 gap-5 text-lg fx-serif tracking-wide">
+      <a href="servicios.html" class="mobile-link">SERVICIOS</a>
+      <a href="portafolio.html" class="mobile-link">PORTAFOLIO</a>
+      <a href="precios.html" class="mobile-link">PRECIOS</a>
+      <a href="index.html#agenda" class="mobile-link">AGENDA</a>
+      <a href="faq.html" class="mobile-link">FAQ</a>
+      <a href="contacto.html" class="mobile-link">CONTACTO</a>
+      <a href="premios.html" class="mobile-link">🏆 PREMIOS</a>
+      <a href="servicios.html#negocios" class="mobile-link">🏢 PARA EMPRESAS</a>
+    </div>
+  </div>
+</header>
+<section id="portafolio" class="pt-40 md:pt-52 pb-24 md:pb-32">
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="font-mono text-xs tracking-[0.3em] uppercase text-bone/50 mb-4">Portafolio</p>
+        <h2 class="fx-serif text-4xl md:text-6xl uppercase leading-none">Trabajo real,<br>artistas reales</h2>
+      </div>
+    </div>
+
+    <div class="reveal flex flex-wrap gap-2 mb-10" id="filterBar">
+      <button class="filter-btn active" data-filter="videos">Videoclips</button>
+      <button class="filter-btn" data-filter="sessions">Sesiones</button>
+      <button class="filter-btn" data-filter="photo">Fotografía</button>
+      <button class="filter-btn" data-filter="bts">Detrás de cámaras</button>
+      <button class="filter-btn" data-filter="commercial">Trabajo comercial</button>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="portfolioGrid"></div>
+    <div id="loadMoreVideosWrap" class="hidden text-center mt-10">
+      <button id="loadMoreVideosBtn" type="button" class="rounded-full border border-bone/20 px-8 py-3.5 text-sm font-semibold hover:border-bone/50 transition-colors">Cargar más videos</button>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="portfolioModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-ink/90 backdrop-blur-md px-4">
+  <button id="modalClose" class="absolute top-6 right-6 w-11 h-11 rounded-full glass flex items-center justify-center" aria-label="Cerrar">✕</button>
+  <div class="max-w-4xl w-full">
+    <div class="tv-frame" id="modalTvFrame">
+      <div class="tv-antenna"></div>
+      <div class="tv-screen aspect-video w-full bg-black overflow-hidden" id="modalMediaWrap"></div>
+      <div class="tv-bezel-bottom">
+        <span class="tv-brand">B HOUSE TV</span>
+        <span class="tv-speaker"></span>
+        <div class="tv-controls">
+          <span class="tv-led"></span>
+          <div>
+            <span class="tv-knob-volume"></span>
+            <p class="tv-knob-label">VOL</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-polaroid hidden mx-auto" id="modalPhotoFrame">
+      <div class="modal-polaroid-photo" id="modalPhotoWrap"></div>
+      <img src="img/firma.png" alt="B House Music" class="modal-polaroid-signature" onerror="this.style.display='none';">
+    </div>
+    <div class="mt-4">
+      <h3 id="modalTitle" class="fx-serif text-2xl uppercase"></h3>
+      <p id="modalDesc" class="text-bone/60 text-sm mt-1"></p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="border-t border-line py-14">
+  <div class="mx-auto max-w-7xl px-5 md:px-8 flex flex-col md:flex-row md:items-start justify-between gap-10">
+    <div>
+      <p class="fx-serif text-2xl">B HOUSE MUSIC</p>
+      <p class="text-bone/40 text-sm mt-2">© <span id="year"></span> B House Music. Todos los derechos reservados.</p>
+    </div>
+    <div class="flex flex-wrap gap-x-10 gap-y-6 text-sm">
+      <div class="flex flex-col gap-2 text-bone/60">
+        <a href="servicios.html" class="hover-line w-fit">Servicios</a>
+        <a href="portafolio.html" class="hover-line w-fit">Portafolio</a>
+        <a href="precios.html" class="hover-line w-fit">Precios</a>
+        <a href="index.html#agenda" class="hover-line w-fit">Agenda</a>
+      </div>
+      <div class="flex flex-col gap-2 text-bone/60">
+        <a href="faq.html" class="hover-line w-fit">FAQ</a>
+        <a href="contacto.html" class="hover-line w-fit">Contacto</a>
+        <a href="https://www.instagram.com/bhousemusiccr/" target="_blank" rel="noopener" class="hover-line w-fit">Instagram</a>
+        <a href="https://wa.me/50670166631" target="_blank" rel="noopener" class="hover-line w-fit">WhatsApp</a>
+      </div>
+      <div class="flex flex-col gap-2 text-bone/60">
+        <button type="button" id="openLegalModal" class="hover-line w-fit text-left">Términos y Privacidad</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- LEGAL MODAL -->
+<div id="legalModal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-ink/90 backdrop-blur-md px-4">
+  <div class="glass rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6 md:p-10 relative">
+    <button id="legalModalClose" class="absolute top-5 right-5 w-9 h-9 rounded-full glass flex items-center justify-center" aria-label="Cerrar">✕</button>
+    <div class="flex gap-2 mb-6" id="legalTabs">
+      <button type="button" class="legal-tab-btn active" data-tab="terminos">Términos</button>
+      <button type="button" class="legal-tab-btn" data-tab="privacidad">Privacidad</button>
+    </div>
+    <div id="legalTerminos" class="legal-tab-content space-y-3 text-sm text-bone/70 leading-relaxed">
+      <h3 class="fx-serif text-xl uppercase text-bone mb-2">Términos y condiciones</h3>
+      <p>Al reservar una sesión con B House Music (grabación de audio o paquetes de video), aceptás lo siguiente:</p>
+      <p><strong class="text-bone/90">Reservas:</strong> las sesiones de video requieren un depósito del 50% para confirmar la fecha; sin comprobante de pago, la fecha no queda agendada. Una fecha marcada en el calendario del sitio queda pendiente hasta la confirmación por WhatsApp.</p>
+      <p><strong class="text-bone/90">Cambios y cancelaciones:</strong> podés cambiar fecha u hora hasta 48 horas antes, sujeto a disponibilidad. Cancelaciones con menos de 48 horas no tienen reembolso del adelanto; con más de 48 horas, el adelanto queda como crédito para reprogramar.</p>
+      <p><strong class="text-bone/90">Horarios y tiempo contratado:</strong> los retrasos del cliente se descuentan del tiempo de sesión. Los traslados entre locaciones (paquetes de video) cuentan dentro del tiempo contratado. La hora adicional tiene un costo fijo indicado en la sección de Precios.</p>
+      <p><strong class="text-bone/90">Entrega y uso del contenido:</strong> se entrega el material en la calidad y formato acordado. El cliente tiene derecho de uso comercial en sus propios canales. Los archivos crudos o sin editar no se incluyen salvo acuerdo por escrito.</p>
+      <p><strong class="text-bone/90">Derechos de autor:</strong> las grabaciones de tu voz y letra son tuyas. Los beats o instrumentales exclusivos se ceden bajo las condiciones acordadas al momento de la compra.</p>
+      <p class="text-bone/40 text-xs pt-2">Este resumen aplica las políticas comerciales de B House Music vigentes en el sitio y no sustituye asesoría legal profesional.</p>
+    </div>
+    <div id="legalPrivacidad" class="legal-tab-content space-y-3 text-sm text-bone/70 leading-relaxed hidden">
+      <h3 class="fx-serif text-xl uppercase text-bone mb-2">Política de privacidad</h3>
+      <p>B House Music recopila únicamente los datos que nos das directamente al escribirnos o llenar el formulario de Agenda: nombre, número de WhatsApp o correo, y los detalles de tu proyecto (paquete, fecha, hora, accesorios).</p>
+      <p>Estos datos se usan solo para coordinar tu sesión, confirmar reservas y responder tus consultas — nunca se venden ni se comparten con terceros para fines publicitarios.</p>
+      <p>De acuerdo con la <strong class="text-bone/90">Ley N.° 8968</strong> de Protección de la Persona frente al Tratamiento de sus Datos Personales de Costa Rica, y ante la Agencia de Protección de Datos de los Habitantes (PRODHAB), tenés derecho a acceder, rectificar, cancelar u oponerte al uso de tus datos personales (derechos ARCO) en cualquier momento, escribiéndonos por WhatsApp.</p>
+      <p>El sitio usa un chatbot y calculadoras que funcionan enteramente en tu navegador — no envían tus respuestas a ningún servidor externo. El formulario de contacto y el de Agenda abren WhatsApp con tu mensaje; en ese punto, la conversación queda sujeta a la política de privacidad de WhatsApp/Meta.</p>
+      <p class="text-bone/40 text-xs pt-2">Este resumen es informativo y no sustituye asesoría legal profesional. Si tenés dudas sobre tus datos, escribinos por WhatsApp.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .legal-tab-btn{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(245,244,240,.15);color:rgba(245,244,240,.6);}
+  .legal-tab-btn.active{background:#f5f4f0;color:#0a0a0a;border-color:#f5f4f0;}
+</style>
+<script src="assets/config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

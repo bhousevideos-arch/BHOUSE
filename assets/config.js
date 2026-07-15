@@ -1,0 +1,366 @@
+const CONFIG = {
+  // ⭐ NEGOCIOS — contenido de la sección "🏢 Para Empresas" dentro de servicios.html
+  businessMission: [
+    {icon:'⭐', title:'Nuestra misión', desc:'Que cualquier negocio, sin importar su tamaño, pueda tener contenido audiovisual de nivel profesional.'},
+    {icon:'⏱️', title:'Cómo trabajamos', desc:'Rápido, claro y sin vueltas: cotización clara, fecha de grabación y entrega puntual.'},
+    {icon:'🤝', title:'Con quién trabajamos', desc:'Restaurantes, tiendas, gimnasios, clínicas, hoteles, Airbnb, bienes raíces y emprendedores en todo Costa Rica.'},
+  ],
+  businessServices: [
+    {icon:'🎬', title:'Video Reel Express', price:'₡15.000', desc:'Video corto para redes, listo para publicar.'},
+    {icon:'🎥', title:'Video Reel Premium', price:'₡30.000', desc:'Video de mayor producción, con más tomas y edición.'},
+    {icon:'📺', title:'Video para Pantallas', price:'₡20.000', desc:'Pieza audiovisual para pantallas en el local.'},
+    {icon:'✂️', title:'Edición de Video', price:'Desde ₡20.000', desc:'Edición profesional de material que ya tenés grabado.'},
+    {icon:'📸', title:'5 Fotos Comerciales', price:'₡18.000', desc:'Sesión de fotografía para tu negocio, 5 fotos editadas.'},
+    {icon:'📷', title:'10 Fotos Comerciales', price:'₡30.000', desc:'Sesión ampliada, 10 fotos editadas.'},
+    {icon:'✨', title:'Historia Animada', price:'₡8.000', desc:'Historia animada para Instagram/Facebook.'},
+    {icon:'🖼️', title:'Historia Estática', price:'₡5.000', desc:'Historia estática lista para publicar.'},
+    {icon:'📰', title:'Flyer Publicitario', price:'₡10.000', desc:'Diseño de flyer para promociones o eventos.'},
+    {icon:'🔤', title:'Logo Básico', price:'₡15.000', desc:'Diseño de logo simple para tu marca.'},
+    {icon:'🌀', title:'Logo Animado', price:'₡25.000', desc:'Versión animada de tu logo para redes y video.'},
+  ],
+  businessPackages: [
+    {name:'Emprendedor', price:'₡35.000', desc:'Para empezar con presencia digital.', features:['5 Fotos Comerciales','1 Historia Animada','1 Flyer Publicitario'], featured:false},
+    {name:'Negocio', price:'₡65.000', desc:'El más elegido por negocios establecidos.', features:['10 Fotos Comerciales','Video Reel Express','2 Historias (animada + estática)','1 Flyer Publicitario'], featured:true},
+    {name:'Premium', price:'₡120.000', desc:'Producción completa para tu marca.', features:['Video Reel Premium','10 Fotos Comerciales','Logo Animado','2 Flyers Publicitarios'], featured:false},
+  ],
+  services: [
+    {icon:'🎙️', title:'Grabación profesional', desc:'Sesiones de voz con equipo de nivel broadcast y acústica tratada.'},
+    {icon:'🎚️', title:'Mezcla', desc:'Balance, espacio y punch listos para cualquier plataforma.'},
+    {icon:'💿', title:'Masterización', desc:'Loudness competitivo y traducción perfecta en todos los sistemas.'},
+    {icon:'🎛️', title:'Producción musical', desc:'Composición, arreglos y dirección musical de principio a fin.'},
+    {icon:'🔥', title:'Beats exclusivos', desc:'Instrumentales originales, 100% tuyos, en el género que necesitas.'},
+    {icon:'🎬', title:'Videoclips', desc:'Dirección, filmación y edición cinematográfica para tu single.'},
+    {icon:'🔤', title:'Lyric videos', desc:'Contenido visual sincronizado, ideal para pre-lanzamientos.'},
+    {icon:'🌀', title:'Visualizers', desc:'Piezas visuales de bajo costo para acompañar tu lanzamiento digital.'},
+    {icon:'📷', title:'Fotografía', desc:'Sesiones de artista para portadas, prensa y redes.'},
+    {icon:'🧢', title:'Branding de artista', desc:'Identidad visual y dirección de imagen coherente con tu sonido.'},
+    {icon:'📱', title:'Contenido para redes', desc:'Clips verticales y piezas listas para Reels, TikTok y Shorts.'},
+  ],
+  portfolio: [
+    {cat:'videos', title:'Mentirosa - Willy (Video Oficial)', desc:'Videoclip oficial producido por B House Music.', youtube:'rXXDV9ePFIU'},
+    {cat:'sessions', title:'Grabación de voz — Estudio A', desc:'Sesión de grabación de un sencillo.', img:'img/PORTAFOLIO-7.jpg'},
+    {cat:'photo', title:'Sesión de fotografía de artista', desc:'Portada de EP.', img:'img/FOTOGRAFIA-1.jpg'},
+    {cat:'bts', title:'Detrás de cámaras — Rodaje', desc:'Making of de videoclip.', img:'img/RETRATO-2.jpg'},
+    {cat:'commercial', title:'Contenido comercial — Marca', desc:'Pieza audiovisual para marca aliada.', img:'img/portfolio-5.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 1', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-1.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 2', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-2.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 3', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-3.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 4', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-4.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 5', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-5.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 6', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-6.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 7', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-7.jpg'},
+    {cat:'commercial', title:'Fotografía comercial — Negocio 8', desc:'Sesión de fotografía comercial para negocio.', img:'img/negocio-8.jpg'},
+    {cat:'videos', title:'DIFERENTE - Shelloh', desc:'Videoclip oficial producido por B House Music.', youtube:'qY_VTZM8sK4'},
+    {cat:'sessions', title:'Producción de beat en vivo', desc:'Sesión de producción.', img:'img/BEAT-1.jpg'},
+    {cat:'photo', title:'Retrato editorial', desc:'Sesión en blanco y negro.', img:'img/RETRATO-1.jpg'},
+    {cat:'commercial', title:'Spot audiovisual', desc:'Pieza corta para redes.', img:'img/portfolio-9.jpg'},
+    {cat:'videos', title:'Gatillo Gang - Por la City (Video Oficial)', desc:'Videoclip oficial producido por B House Music.', youtube:'x-TBrtKmYF0'},
+    {cat:'videos', title:'Baila Conmigo - Gerald Again (Video Oficial)', desc:'Videoclip oficial producido por B House Music.', youtube:'hrpuhYMxagM'},
+    {cat:'videos', title:'Te Pienso - Gerald Again (Video Oficial)', desc:'Videoclip oficial producido por B House Music.', youtube:'25pjp2BCSGc'},
+    {cat:'videos', title:'Lázaro - Noro M (Video Oficial) 2025', desc:'Videoclip oficial producido por B House Music.', youtube:'UVYZ1nO7wb4'},
+    {cat:'videos', title:'Aprendí - LEGION7 ft. Moises Marsh', desc:'Videoclip oficial producido por B House Music.', youtube:'eBV5txZcoas'},
+    {cat:'videos', title:'Carta a una Madre - Big Lion', desc:'Videoclip oficial producido por B House Music.', youtube:'9NDwivsb4_Y'},
+  ],
+  youtube: [
+    {title:'En la Carretera', artist:'—', id:'oLPJoc3GmPY'},
+    {title:'SWMS', artist:'Shelloh ft. Dntlo, Young Reddy & Tian', id:'W8GF1WzXuFc'},
+    {title:'Bullshit', artist:'ADN ft. El Deiff', id:'o4xotw_p2bs'},
+    {title:'No Pudieron', artist:'Bruma Kiat ft. Munrray', id:'-AXJOxx6ftE'},
+    {title:'King of Funky', artist:'ADN', id:'mW2uiL_EUPM'},
+    {title:'Último Viaje', artist:'ADN & Shelloh', id:'6qzxxQ_gOxk'},
+    {title:'Se Acabó', artist:'ADN', id:'30aquVhV-rk'},
+    {title:'Agradecido', artist:'Carlos Crawford', id:'JLxR4sHdkas', gospel:true},
+    {title:'Borrachita', artist:'Xander', id:'gb-FyFOzcQw'},
+    {title:'Como Rocky', artist:'Noro M ft. Radikll', id:'RyweW07OgdY', gospel:true},
+    {title:'First Class', artist:'Noro M', id:'nDO0nl9modk', gospel:true},
+    {title:'El Examen (Remix)', artist:'El Soldado ft. varios artistas', id:'JmW-TbsQWaA'},
+    {title:'No Me Pueden Parar', artist:'Carlos Crawford', id:'DZVD9smxcnk', gospel:true},
+    {title:'Immm', artist:'Divian', id:'2xRNG2FJ7cg'},
+    {title:'Pa la Calle', artist:'Noro M', id:'-bwJgQfVGLc', gospel:true},
+    {title:'Tu Corazón', artist:'Noro M & Merloy', id:'NbOAT6KyxAs', gospel:true},
+    {title:'Ap 320', artist:'Fresh ft. Carlos Crawford', id:'CEkSeYKVwOs'},
+    {title:'No me Interesa', artist:'Enka Méndez, Rhenno & Jay Kendall', id:'XODuj03OIfo'},
+    {title:'Faygo (Remix)', artist:'Kapuo x Rapper God', id:'ccVlD69bkBk'},
+    {title:'Padre Nuestro', artist:'Katherine Cordero', id:'ecmBFo5PWhc', gospel:true},
+    {title:'Panas', artist:'DCM ft. Yossky', id:'QWqY7iwZvuk'},
+    {title:'Sola Perrea', artist:'Kavvo ft. Shelloh', id:'lQZAujzLuHI'},
+    {title:'Kizas', artist:'Shelloh', id:'ylt4QtmTWok'},
+    {title:'Soltera', artist:'Shelloh ft. Rhenno', id:'EXkxP-Mtygo'},
+    {title:'Rey de Gloria', artist:'Noro M ft. Katherine Cordero', id:'ne2boH2H5CE', gospel:true},
+    {title:'Aquí', artist:'Fresh Tdf', id:'zJ0FurL2u9A'},
+    {title:'Ganas de Vivir', artist:'Fresh Tdf ft. Morrish', id:'HJKHpJeCQlY'},
+    {title:'Third Eye', artist:'Kap', id:'Xb56EMRBd-Q'},
+    {title:'Loyal', artist:'Soultwo', id:'cPAVM-K7dX0'},
+    {title:'Real', artist:'Morrish', id:'506sZkqzFm0', gospel:true},
+    {title:'Le Pido a Dios (Cover Acústico)', artist:'—', id:'RK94f_fhUw0'},
+    {title:'No Nací Rico', artist:'Yossky ft. Shelloh, Enka Méndez & Ricardo Kampos', id:'8hHyPmba7FI'},
+    {title:'Tu y Yo', artist:'Shelloh, Enka Méndez & Conkarah', id:'aKMZb--bwQQ'},
+    {title:'Dime', artist:'Enka Méndez', id:'fx8gQS0V_8M'},
+    {title:'83', artist:'Kapuo', id:'Ja7x_OdhRQ4'},
+    {title:'Coronaos', artist:'Blunt ft. DCM', id:'rb76MQcrLTI'},
+    {title:'No Time 4 Fakez', artist:'Blunt', id:'00EgxR6eAbk'},
+    {title:'H.A.T.E', artist:'Kavi ft. Soultwo', id:'xkF5jXw9pVY'},
+    {title:'KBS', artist:'Kavi ft. Blunt & Shelloh', id:'tqaaHSHwLLA'},
+    {title:'Trapa', artist:'Kapuo', id:'kQCiAdpV8C4'},
+    {title:'Lobos', artist:'Blunt', id:'tcoK-Tfdjtw'},
+    {title:'Sigo Caminando', artist:'Fresh Tdf', id:'3lxN5xc7EJg'},
+    {title:'Dioses Muertos', artist:'Fresh Tdf', id:'MUF7m7R_Hfc'},
+    // ⚠️ PENDIENTE: decime el año de estos 14 para ordenarlos junto con los de arriba.
+    {title:'Mentirosa', artist:'Willy', id:'rXXDV9ePFIU'},
+    {title:'Diferente', artist:'Shelloh', id:'qY_VTZM8sK4'},
+    {title:'Por la City', artist:'Gatillo Gang', id:'x-TBrtKmYF0'},
+    {title:'Baila Conmigo', artist:'Gerald Again', id:'hrpuhYMxagM'},
+    {title:'Te Pienso', artist:'Gerald Again', id:'25pjp2BCSGc'},
+    {title:'Lázaro', artist:'Noro M', id:'UVYZ1nO7wb4', gospel:true},
+    {title:'Aprendí', artist:'LEGION7 ft. Moises Marsh', id:'eBV5txZcoas'},
+    {title:'Carta a una Madre', artist:'Big Lion', id:'9NDwivsb4_Y'},
+    {title:'Nacido Para Esto', artist:'Gatillo Gang', id:'JuAg8ylPpPw'},
+    {title:'Raca Taca', artist:'Gatillo Gang, JYS SB & Tucasb', id:'Z9ljJc1eZwc'},
+    {title:'Rial Drilla', artist:'Blunt', id:'COtvKeRHsmY'},
+    {title:'Todo Obra Para Bien', artist:'Mike Joseph', id:'dGx21cbGJ_k'},
+    {title:'Gospel All Star Riddim', artist:'Varios', id:'_0TBDbcMHPQ', gospel:true},
+    {title:'Ayúdame', artist:'Fresh Tdf', id:'iI9AOrjQYK0', gospel:true},
+  ],
+  faq: [
+    ['¿Cuánto cuesta una sesión de grabación?','La hora de grabación tiene un costo de ₡15,000 e incluye grabación, mezcla, masterización y exportación en alta calidad.'],
+    ['¿Puedo traer amigos a la sesión?','Sí, puedes traer acompañantes. Te pedimos mantener el ambiente enfocado para aprovechar mejor el tiempo de estudio.'],
+    ['¿Se puede fumar en el estudio?','No se permite fumar dentro de las instalaciones para proteger el equipo y la acústica del espacio.'],
+    ['¿Puedo grabar los fines de semana?','Sí. Las sesiones de audio se coordinan según disponibilidad, y las sesiones audiovisuales están disponibles sábados y domingos de 10:00 a.m. a 6:00 p.m.'],
+    ['¿Puedo usar mi propio beat?','Claro, puedes traer tu instrumental en formato WAV o MP3 de buena calidad para trabajar sobre él.'],
+    ['¿Hacen mezcla y masterización?','Sí, ambos servicios están incluidos en la tarifa por hora de grabación, o se pueden contratar por separado si ya tienes tu grabación lista.'],
+    ['¿Puedo pagar por SINPE Móvil?','Sí, aceptamos SINPE Móvil, además de otros métodos de pago que coordinamos al momento de reservar.'],
+    ['¿Cuánto tiempo toma grabar una canción?','Depende de la complejidad, pero en promedio una canción completa toma entre 2 y 4 horas de sesión.'],
+    ['¿Pueden hacer mi videoclip?','Sí, ofrecemos paquetes audiovisuales completos: Express, ARTISTA y Premium, según la duración y accesorios que necesites.'],
+    ['¿Puedo contratar fotografía también?','Sí, la fotografía se puede agregar a cualquier paquete o contratar de forma independiente.'],
+    ['¿Qué debo traer a la sesión?','Trae tu letra lista (si aplica), tu instrumental si ya lo tienes, y muchas ganas de crear. Nosotros ponemos el resto.'],
+    ['¿Me ayudan a escribir la letra?','Podemos apoyarte en el proceso creativo si lo necesitas; coméntanoslo antes de la sesión para planificar el tiempo.'],
+    ['¿Puedo reprogramar mi cita?','Sí, con un mínimo de 48 horas de anticipación. El mismo día de la sesión no se reprograma, salvo casos de fuerza mayor.'],
+    ['¿Qué pasa si llego tarde?','El tiempo de retraso se descuenta de tu sesión, ya que el horario está reservado exclusivamente para ti.'],
+    ['¿Se necesita depósito para reservar?','Sí, se solicita un depósito para confirmar la fecha y asegurar tu espacio en la agenda.'],
+    ['¿Puedo cancelar mi reserva?','Sí, pero te recomendamos avisar con anticipación. Las políticas de reembolso del depósito se explican al momento de reservar.'],
+    ['¿El drone está disponible en todos los paquetes?','No. El drone no está disponible en los paquetes Express ni ARTISTA, solo en Premium o por acuerdo especial.'],
+    ['¿Qué cámara y lentes usan?','Trabajamos con una Sony A7III y lentes 11mm, 28-70mm y 85mm, según la toma que necesite el proyecto.'],
+    ['¿Con qué géneros trabajan?','Trabajamos con reggaetón, trap, afrobeat, rap, R&B, dembow y géneros urbanos en general.'],
+    ['¿Puedo reservar solo una hora?','Sí, la sesión de grabación se cobra por hora, así que puedes reservar el tiempo exacto que necesites.'],
+    ['¿Cuánto tardan en entregar la mezcla final?','El tiempo de entrega varía según la complejidad del proyecto; normalmente se coordina un plazo al confirmar la sesión.'],
+    ['¿Cuántas revisiones de mezcla incluye?','Incluimos ajustes razonables después de la primera entrega para asegurar tu satisfacción con el resultado final.'],
+    ['¿Los menores de edad pueden grabar?','Sí, siempre que asistan acompañados de un adulto responsable durante toda la sesión.'],
+    ['¿Hay parqueo disponible?','Sí, contamos con espacio para parquear cerca del estudio. Te compartimos la ubicación exacta al confirmar tu cita.'],
+    ['¿Dónde está ubicado el estudio?','Estamos ubicados en Costa Rica; la dirección exacta se comparte al confirmar tu reserva por WhatsApp.'],
+    ['¿Trabajan con artistas de otros países?','Sí, hemos trabajado con artistas que viajan a Costa Rica específicamente para grabar con nosotros.'],
+    ['¿Puedo grabar una colaboración con otro artista?','Sí, puedes reservar sesiones conjuntas; solo coordínalo con anticipación para organizar el tiempo necesario.'],
+    ['¿Puedo traer mi propio equipo?','En general no es necesario, pero si tienes un instrumento o pieza específica que quieras usar, avísanos antes.'],
+    ['¿Quién se queda con los derechos de la música?','Los derechos de tu grabación son tuyos. Los beats exclusivos se ceden bajo las condiciones que se acuerdan por escrito.'],
+    ['¿Puedo escuchar beats antes de comprarlos?','Sí, podemos compartirte opciones o crear algo a medida según el estilo que busques.'],
+    ['¿Cuánto cuesta una hora adicional en las sesiones de video?','Cada hora adicional en los paquetes audiovisuales tiene un costo de $200.'],
+    ['¿Cobran extra por salir del GAM?','El desplazamiento fuera del Gran Área Metropolitana puede generar un costo adicional según la distancia.'],
+    ['¿Puedo pagar en cuotas?','Podemos conversar opciones de pago según el tipo de proyecto; escríbenos para revisarlo juntos.'],
+    ['¿Hay sesiones entre semana?','Sí, el estudio abre de lunes a viernes de 4:00 p.m. a 8:00 p.m. para sesiones de grabación.'],
+  ],
+  testimonials: [
+    {quote:'Always a pleasure to record at B House. Quality service and excellent sound. Shelloh, my friend 🔥'},
+    {quote:'Un estudio muy profesional, la calidad es alta y el productor no solo te ayuda a grabar, también te guía en el proceso para que la canción quede lo mejor posible. 100% recomendado.'},
+    {quote:'Calidad de grabación excelente, siguiente nivel 🔥'},
+    {quote:'Muy profesional, muy buen servicio, y demostró mucho.'},
+    {quote:'El mejor estudio. Díganle, teacher Shello.'},
+  ],
+  instagramPosts: [
+    'img/instagram-1.jpg',
+    'img/instagram-2.jpg',
+    'img/instagram-3.jpg',
+    'img/instagram-4.jpg',
+    'img/instagram-5.jpg',
+    'img/instagram-6.jpg',
+  ],
+  /* Mini-reproductor flotante — máximo 10 pistas. Edita/reordena esta lista para curar qué suena en el sitio. */
+  playerTracks: [
+    {title:'Mentirosa', artist:'Willy', id:'rXXDV9ePFIU'},
+    {title:'Diferente', artist:'Shelloh', id:'qY_VTZM8sK4'},
+    {title:'Por la City', artist:'Gatillo Gang', id:'x-TBrtKmYF0'},
+    {title:'Baila Conmigo', artist:'Gerald Again', id:'hrpuhYMxagM'},
+    {title:'Te Pienso', artist:'Gerald Again', id:'25pjp2BCSGc'},
+    {title:'Lázaro', artist:'Noro M', id:'UVYZ1nO7wb4'},
+    {title:'Aprendí', artist:'LEGION7 ft. Moises Marsh', id:'eBV5txZcoas'},
+    {title:'Carta a una Madre', artist:'Big Lion', id:'9NDwivsb4_Y'},
+    {title:'Nacido Para Esto', artist:'Gatillo Gang', id:'JuAg8ylPpPw'},
+    {title:'Raca Taca', artist:'Gatillo Gang, JYS SB & Tucasb', id:'Z9ljJc1eZwc'},
+  ],
+  /* Artista del mes — cambia esto cada mes para destacar a alguien distinto */
+  /* ========================================================
+     SERVICIOS.HTML — cuestionario interactivo por servicio
+     ========================================================
+     Al hacer clic en una tarjeta de servicio, se abre un mini-formulario
+     con estas preguntas. Al terminar, según "goesToAgenda":
+       true  → lleva a la Agenda (index.html) a elegir fecha/hora, y toda
+               la info recolectada se agrega al mensaje final de WhatsApp.
+       false → manda directo a WhatsApp con la info recolectada (no reserva
+               fecha, porque el servicio no ocupa tiempo de estudio en vivo).
+     Las claves ("Grabación profesional", "Mezcla"...) tienen que
+     coincidir EXACTO con los títulos de "services" de arriba.
+  */
+  serviceFlows: {
+    'Grabación profesional': {
+      goesToAgenda: true,
+      questions: [
+        { label: '¿Cuántas voces vas a grabar?', options: ['1 voz', '2-3 voces', '4+ voces'] },
+        { label: '¿Tenés el instrumental listo?', options: ['Sí, ya tengo el beat', 'No, necesito uno de B House'] },
+      ],
+    },
+    'Mezcla': {
+      goesToAgenda: false,
+      questions: [
+        { label: '¿Cuántas pistas/tracks tenés?', options: ['1-8 pistas', '9-16 pistas', '17+ pistas'] },
+        { label: '¿En qué formato están las voces?', options: ['Mono 16-bit', 'Mono 24-bit', 'Estéreo 16-bit', 'Estéreo 24-bit'] },
+      ],
+    },
+    'Masterización': {
+      goesToAgenda: false,
+      questions: [
+        { label: '¿Ya tenés la mezcla lista?', options: ['Sí, tengo la mezcla', 'No, necesito mezcla también'] },
+        { label: '¿En qué formato están las voces?', options: ['Mono 16-bit', 'Mono 24-bit', 'Estéreo 16-bit', 'Estéreo 24-bit'] },
+        { label: '¿Cuántas canciones?', options: ['1 canción', 'EP (3-5)', 'Álbum (6+)'] },
+      ],
+    },
+    'Producción musical': {
+      goesToAgenda: true,
+      questions: [
+        { label: '¿Qué necesitás?', options: ['Composición completa', 'Arreglos sobre una idea', 'Dirección musical'] },
+        { label: 'Género principal', options: ['Reggaetón', 'Trap', 'Afrobeat', 'Rap', 'R&B', 'Otro'] },
+      ],
+    },
+    'Beats exclusivos': {
+      goesToAgenda: false,
+      questions: [
+        // ⚠️ Ajustá estos precios de referencia a los que realmente cobrás
+        { label: '¿Qué tipo de beat necesitás?', options: ['Con referencia (basado en una canción) — desde $50', 'Urbano 100% original — desde $80', 'Otro género original — desde $80'] },
+        { label: 'Género', options: ['Reggaetón', 'Trap', 'Afrobeat', 'Dembow', 'R&B', 'Otro'] },
+      ],
+    },
+    'Videoclips': {
+      goesToAgenda: true,
+      questions: [
+        { label: '¿Cuántas locaciones?', options: ['1 locación', '2-3 locaciones'] },
+        { label: '¿Necesitás drone?', options: ['Sí', 'No'] },
+      ],
+    },
+    'Lyric videos': {
+      goesToAgenda: true,
+      questions: [
+        { label: '¿Tenés el audio final listo?', options: ['Sí', 'No, todavía no'] },
+        { label: 'Estilo visual', options: ['Minimalista', 'Con animaciones', 'Con clips de fondo'] },
+      ],
+    },
+    'Visualizers': {
+      goesToAgenda: true,
+      questions: [
+        { label: '¿Tenés el audio final listo?', options: ['Sí', 'No, todavía no'] },
+      ],
+    },
+    'Fotografía': {
+      goesToAgenda: true,
+      questions: [
+        { label: 'Tipo de sesión', options: ['Portada de single/EP', 'Sesión editorial', 'Prensa / redes'] },
+        { label: '¿Cuántos looks/outfits?', options: ['1 look', '2-3 looks', '4+ looks'] },
+      ],
+    },
+    'Branding de artista': {
+      goesToAgenda: false,
+      questions: [
+        { label: '¿Qué necesitás?', options: ['Logo / isotipo', 'Paleta de colores y tipografía', 'Identidad completa'] },
+      ],
+    },
+    'Contenido para redes': {
+      goesToAgenda: false,
+      questions: [
+        { label: '¿Cuántos clips necesitás?', options: ['1-3 clips', '4-8 clips', '9+ clips'] },
+      ],
+    },
+  },
+  artistOfMonth: {
+    name: 'Willy',
+    trackTitle: 'Mentirosa',
+    youtube: 'rXXDV9ePFIU',
+    blurb: 'Este mes destacamos a Willy, con su más reciente lanzamiento producido en B House Music. Un ejemplo de lo que puede salir de nuestro estudio cuando la visión del artista y la producción se alinean.',
+  },
+  /* ========================================================
+     PREMIOS B HOUSE — votación con GitHub (gratis, sin tarjeta)
+     ========================================================
+     Cómo funciona: cada nominado tiene un "Issue" en tu repo de GitHub.
+     La gente entra con su cuenta de GitHub y le da 👍 — eso cuenta como voto.
+     Acá solo conectás el número de cada Issue una vez que los crees.
+
+     PASO A PASO para crear un Issue de votación:
+     1. Andá a tu repositorio en GitHub → pestaña "Issues" → "New issue".
+     2. Título: el nombre del nominado, ej: "Voto: Willy — Mentirosa"
+     3. Descripción: una línea + el link al video (opcional).
+     4. Creá el Issue y fijate el número que le puso GitHub (aparece como #1, #2, #3... junto al título).
+     5. Poné ese número en "issueNumber" abajo, en el nominado correspondiente.
+     6. Repetí para cada nominado. Podés tener varios nominados por categoría.
+  */
+  /* ========================================================
+     AGENDA EN TIEMPO REAL — bloqueo de fechas con GitHub
+     ========================================================
+     Cómo funciona: cada vez que confirmás una reserva por WhatsApp,
+     creás un Issue en el MISMO repositorio de los Premios, con el
+     título exactamente así (copiá y pegá, solo cambiá los datos):
+
+     Para audio (bloquea solo esas horas de ese día):
+       RESERVA: 2026-07-24 | audio | 16:00-20:00
+
+     Para video (bloquea el día completo):
+       RESERVA: 2026-07-26 | video | dia completo
+
+     El sitio busca automáticamente todos los Issues que empiecen con
+     "RESERVA:" en este mismo repositorio y bloquea esas fechas/horas
+     solo — no hace falta tocar código, ni avisarme, ni subir nada.
+  */
+  bookingsRepo: {
+    repoOwner: 'bhousevideos-arch',
+    repoName: 'B-house-music',
+  },
+  /* ========================================================
+     PREMIOS B HOUSE — sistema de puntaje (redes + jueces)
+     ========================================================
+     Ya no se vota por GitHub. El puntaje final de cada nominado se arma así:
+
+       Puntaje final = (likes de Instagram normalizados × socialWeight)
+                      + (promedio de jueces (0-100) × judgeWeight)
+
+     Cómo actualizar:
+     1. Publicás en Instagram un post por nominado (o uno con todos).
+     2. Cuando tengas los likes, poné ese número en "instagramLikes" del nominado.
+     3. Cuando los jueces califiquen (0 a 100, usando los criterios de "judgeCriteria"),
+        poné el promedio en "judgeScore" del nominado.
+     4. Pegá el link del post en "instagramPostUrl" — aparece un botón "Ver post en
+        Instagram" en la tarjeta del nominado, para que cualquiera vea los likes reales.
+     5. Guardá y subí el archivo — el sitio recalcula las barras solo, no hace falta tocar nada más.
+  */
+  premiosAwards: {
+    socialWeight: 0.4, // 40% del puntaje viene de redes (ajustá si querés otro balance)
+    judgeWeight: 0.6,  // 60% del puntaje viene de los jueces
+    categories: [
+      {
+        name: 'El Mejor Video Ever',
+        subtitle: 'El premio: una producción audiovisual completa 100% gratis con B House Music',
+        judgeCriteria: ['Idea y concepto del video (aporte del artista)', 'Puesta en escena y actuación frente a cámara', 'Coherencia entre el video y la canción', 'Calidad de la canción que acompaña', 'Impacto general y qué tan memorable es'],
+        nominees: [
+          { artist:'Willy', trackTitle:'Mentirosa', youtube:'rXXDV9ePFIU', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+          { artist:'Gatillo Gang', trackTitle:'Por la City', youtube:'x-TBrtKmYF0', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+          { artist:'Gerald Again', trackTitle:'Baila Conmigo', youtube:'hrpuhYMxagM', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+          { artist:'ADN', trackTitle:'Último Viaje', youtube:'6qzxxQ_gOxk', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+        ],
+      },
+      {
+        name: 'Video del Año',
+        subtitle: 'El premio: una producción de audio (grabación de tu canción) 100% gratis en B House Studios',
+        judgeCriteria: ['Composición y arreglo', 'Ejecución e interpretación del artista'],
+        nominees: [
+          { artist:'Shelloh', trackTitle:'Diferente', youtube:'qY_VTZM8sK4', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+          { artist:'Noro M', trackTitle:'Lázaro', youtube:'UVYZ1nO7wb4', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+          { artist:'Big Lion', trackTitle:'Carta a una Madre', youtube:'9NDwivsb4_Y', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+          { artist:'LEGION7 ft. Moises Marsh', trackTitle:'Aprendí', youtube:'eBV5txZcoas', instagramLikes: 0, instagramPostUrl: '', judgeScore: 0 },
+        ],
+      },
+    ],
+  }
+};

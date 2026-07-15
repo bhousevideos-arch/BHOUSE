@@ -1,0 +1,84 @@
+CÓMO DEJAR EL REPOSITORIO LIMPIO Y SUBIR ESTO — LEE ESTO PRIMERO
+==================================================================
+
+Tu repositorio en GitHub quedó con archivos regados del intento
+anterior de "empresas". Vamos a limpiarlo y dejar TODO plano, como
+pediste: solo /assets/, /img/ y los archivos .html sueltos.
+
+PASO 1 — BORRAR en GitHub (antes de subir nada nuevo)
+------------------------------------------------------
+Entrá a tu repositorio → borrá estos archivos/carpetas (click en el
+archivo → ícono de basura → Commit changes):
+
+  ❌ La carpeta empresas/ COMPLETA (con css/, img/, js/ adentro)
+  ❌ nosotros.html   (el que está suelto en la raíz)
+  ❌ cotizar.html    (el que está suelto en la raíz)
+  ❌ INTEGRACION-EMPRESAS.md
+  ❌ LEEME-PRIMERO.txt
+
+  ⚠️ Antes de borrar empresas/img/foto-1.jpg, guardala en tu compu —
+  es la única foto real de negocio que subiste. Ese archivo lo vas a
+  volver a subir después, pero con el nombre "negocio-1.jpg" (ver
+  paso 3).
+
+PASO 2 — SUBIR estos archivos (Add file → Upload files)
+------------------------------------------------------
+Subí TODO lo que viene en este zip, dejando que sobreescriba lo que
+ya existe con el mismo nombre:
+
+  index.html, servicios.html, portafolio.html, precios.html,
+  faq.html, contacto.html, premios.html   ← reemplazan a los actuales
+  cotizacion.html                          ← página NUEVA
+  assets/config.js, assets/app.js          ← reemplazan a los actuales
+  assets/styles.css                        ← no cambió, pero subila igual
+
+  (LEEME-SUBIR-A-GITHUB.txt no hace falta subirlo, es solo para vos)
+
+PASO 3 — Fotos de negocio en img/ (raíz, junto a las de música)
+------------------------------------------------------------------
+Ya NO van dentro de una carpeta "empresas" — van sueltas en tu img/
+de siempre, con estos nombres exactos (los usa la pestaña "Trabajo
+comercial" del portafolio):
+
+  negocio-1.jpg   ← esta es la que ya tenías como "foto-1.jpg",
+                     solo renombrala
+  negocio-2.jpg  negocio-3.jpg  negocio-4.jpg  negocio-5.jpg
+  negocio-6.jpg  negocio-7.jpg  negocio-8.jpg
+
+Mientras no subas alguna, el sitio va a mostrar una cajita gris que
+dice "Falta imagen: negocio-N.jpg" en esa foto — no rompe nada.
+
+QUÉ CAMBIÓ, EN RESUMEN
+-----------------------
+- El link "🏢 Para Empresas" del menú (en las 7 páginas) ahora lleva
+  a servicios.html#negocios — una sección nueva DENTRO de la misma
+  página de servicios, no un sitio aparte.
+- Esa sección tiene: misión/con quién trabajás, los 11 servicios de
+  negocio con precio, los 3 paquetes (Emprendedor/Negocio/Premium), y
+  un botón "Solicitar cotización rápida" que lleva a la página nueva
+  cotizacion.html.
+- cotizacion.html es el formulario con checkboxes que ya tenías en
+  cotizar.html, con el mismo diseño oscuro del resto del sitio, y
+  manda el mensaje directo a tu WhatsApp (7016-6631).
+- Las 8 fotos de negocio ahora son parte de la pestaña "Trabajo
+  comercial" del portafolio (portafolio.html) — no hay portafolio
+  aparte para empresas, es el mismo portafolio de siempre con más
+  fotos adentro.
+- Todo el texto (precios, servicios, misión) vive en
+  assets/config.js, igual que el resto del sitio — si querés
+  cambiar un precio o un texto, es ahí.
+
+PENDIENTES QUE QUEDAN IGUAL (no tocados en este zip)
+-----------------------------------------------------
+- Firebase + Google Sign-In para Premios.
+- Tienda de beats (Gumroad/Payhip).
+- Años pendientes de los ~14 videos originales.
+- Fotos faltantes en img/ para "Contenido comercial — Marca" y
+  "Spot audiovisual" (portfolio-5.jpg y portfolio-9.jpg).
+
+SI ALGO SE VE RARO DESPUÉS DE SUBIR
+------------------------------------
+Esperá 1-2 minutos y recargá con Ctrl+F5 (fuerza que no use una
+versión guardada en caché). Si el menú "Para Empresas" no lleva a
+la sección nueva, revisá que subiste el servicios.html de este zip
+(no el viejo).
