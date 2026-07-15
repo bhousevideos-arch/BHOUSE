@@ -35,6 +35,7 @@
   .mobile-link{border-bottom:1px solid rgba(245,244,240,.08);padding-bottom:1rem;}
   .faq-item button{width:100%;text-align:left;}
   .group.img-missing .img-placeholder{display:flex;}
+  .polaroid.img-missing .img-placeholder{display:flex;}
   .vid-pkg-btn{transition:all .25s ease;}
   .vid-pkg-btn:hover{border-color:rgba(245,244,240,.35);}
   .vid-pkg-btn.active{background:#f5f4f0;color:#0a0a0a;border-color:#f5f4f0;}

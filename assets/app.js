@@ -77,7 +77,7 @@ if (servicesGrid && typeof CONFIG !== 'undefined') {
   setTimeout(() => document.querySelectorAll('#servicesGrid .reveal').forEach(el => io.observe(el)), 50);
 }
 
-/* ============ NEGOCIOS (servicios.html #negocios) ============ */
+/* ============ PARA EMPRESAS (para-empresas.html) ============ */
 const businessMissionGrid = document.getElementById('businessMissionGrid');
 if (businessMissionGrid && typeof CONFIG !== 'undefined' && CONFIG.businessMission) {
   CONFIG.businessMission.forEach(m => {
@@ -86,15 +86,68 @@ if (businessMissionGrid && typeof CONFIG !== 'undefined' && CONFIG.businessMissi
     div.innerHTML = `<div class="text-3xl mb-5">${m.icon}</div><h3 class="fx-serif text-xl uppercase mb-2">${m.title}</h3><p class="text-bone/50 text-sm leading-relaxed">${m.desc}</p>`;
     businessMissionGrid.appendChild(div);
   });
+  setTimeout(() => document.querySelectorAll('#businessMissionGrid .reveal').forEach(el => io.observe(el)), 50);
 }
 
-const businessServicesGrid = document.getElementById('businessServicesGrid');
-if (businessServicesGrid && typeof CONFIG !== 'undefined' && CONFIG.businessServices) {
-  CONFIG.businessServices.forEach(s => {
+// Portafolio de negocios: fotos reales, tomadas de img/ (CONFIG.businessPortfolio)
+const businessPortfolioGrid = document.getElementById('businessPortfolioGrid');
+if (businessPortfolioGrid && typeof CONFIG !== 'undefined' && CONFIG.businessPortfolio) {
+  CONFIG.businessPortfolio.forEach(item => {
     const div = document.createElement('div');
-    div.className = 'reveal card-hover bg-ink p-8 border border-transparent';
-    div.innerHTML = `<div class="text-3xl mb-5">${s.icon}</div><h3 class="fx-serif text-xl uppercase mb-2">${s.title}</h3><p class="text-bone/50 text-sm leading-relaxed mb-4">${s.desc}</p><span class="font-mono text-xs uppercase tracking-widest text-bone/70">${s.price}</span>`;
-    businessServicesGrid.appendChild(div);
+    div.className = 'reveal in polaroid cursor-pointer';
+    div.style.setProperty('--tilt', (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 2 + 1) + 'deg');
+    div.innerHTML = `
+      <div class="aspect-square overflow-hidden bg-[#141414] relative">
+        <img src="${item.img}" loading="lazy" alt="${item.title}" class="w-full h-full object-cover" onerror="this.closest('.polaroid').classList.add('img-missing'); this.remove();">
+        <div class="img-placeholder hidden absolute inset-0 items-center justify-center border border-dashed border-black/15 bg-[#e5e4e0] text-center px-4">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-black/40">Falta imagen<br>${item.img}</span>
+        </div>
+      </div>
+      <div class="polaroid-footer">
+        <p class="polaroid-caption">${item.title}</p>
+        <img src="img/firma.png" alt="B House Music" class="polaroid-signature" onerror="this.remove();">
+      </div>`;
+    businessPortfolioGrid.appendChild(div);
+  });
+}
+
+// Menú a la carta: agrupado por categoría, cada servicio con su propio botón "Cotizar"
+const businessMenuWrap = document.getElementById('businessMenuWrap');
+if (businessMenuWrap && typeof CONFIG !== 'undefined' && CONFIG.businessServices) {
+  const groups = {};
+  CONFIG.businessServices.forEach(s => {
+    if (!groups[s.group]) groups[s.group] = [];
+    groups[s.group].push(s);
+  });
+  Object.keys(groups).forEach(groupName => {
+    const groupWrap = document.createElement('div');
+    groupWrap.className = 'mb-10';
+    groupWrap.innerHTML = `<p class="reveal in font-mono text-xs uppercase tracking-[0.25em] text-bone/50 mb-4 pb-2 border-b border-line">${groupName}</p>`;
+    const rowsWrap = document.createElement('div');
+    rowsWrap.className = 'divide-y divide-line';
+    groups[groupName].forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'reveal in flex items-center justify-between gap-4 py-5';
+      row.innerHTML = `
+        <div class="min-w-0">
+          <h3 class="fx-serif text-lg uppercase leading-tight">${s.icon} ${s.title}</h3>
+          <p class="text-bone/50 text-sm mt-0.5">${s.desc}</p>
+        </div>
+        <div class="flex items-center gap-4 shrink-0">
+          <span class="font-mono text-sm text-bone/80">${s.price}</span>
+          <button type="button" class="business-quote-btn rounded-full border border-bone/30 px-5 py-2 text-sm font-semibold hover:border-bone hover:bg-bone hover:text-ink transition-colors" data-service="${s.title}">Cotizar</button>
+        </div>`;
+      rowsWrap.appendChild(row);
+    });
+    groupWrap.appendChild(rowsWrap);
+    businessMenuWrap.appendChild(groupWrap);
+  });
+
+  businessMenuWrap.addEventListener('click', (e) => {
+    const btn = e.target.closest('.business-quote-btn');
+    if (!btn) return;
+    const texto = `Hola, quiero cotizar: ${btn.dataset.service}`;
+    window.open(`https://wa.me/50670166631?text=${encodeURIComponent(texto)}`, '_blank');
   });
 }
 
@@ -103,48 +156,25 @@ if (businessPackagesGrid && typeof CONFIG !== 'undefined' && CONFIG.businessPack
   CONFIG.businessPackages.forEach(p => {
     const div = document.createElement('div');
     div.className = p.featured
-      ? 'reveal card-hover rounded-3xl border-2 border-bone p-8 flex flex-col relative'
-      : 'reveal card-hover rounded-3xl border border-bone/15 p-8 flex flex-col';
+      ? 'reveal in card-hover rounded-3xl border-2 border-bone p-8 flex flex-col relative'
+      : 'reveal in card-hover rounded-3xl border border-bone/15 p-8 flex flex-col';
     div.innerHTML = `
       ${p.featured ? '<span class="absolute -top-3 left-8 bg-bone text-ink text-xs font-mono uppercase tracking-widest px-3 py-1 rounded-full">Más elegido</span>' : ''}
       <p class="font-mono text-xs uppercase tracking-widest text-bone/50 mb-2">${p.name}</p>
       <div class="fx-serif text-4xl mb-1">${p.price}</div>
       <p class="text-bone/50 text-sm mb-6">${p.desc}</p>
       <ul class="text-sm text-bone/70 space-y-2 mb-8 flex-1">${p.features.map(f => `<li>✓ ${f}</li>`).join('')}</ul>
-      <a href="cotizacion.html" class="rounded-full ${p.featured ? 'bg-bone text-ink hover:bg-white' : 'border border-bone/30 hover:border-bone'} px-6 py-3 text-sm font-semibold text-center transition-colors">Elegir ${p.name}</a>`;
+      <button type="button" class="business-quote-btn rounded-full ${p.featured ? 'bg-bone text-ink hover:bg-white' : 'border border-bone/30 hover:border-bone'} px-6 py-3 text-sm font-semibold text-center transition-colors" data-service="Paquete ${p.name} (${p.price})">Elegir ${p.name}</button>`;
     businessPackagesGrid.appendChild(div);
   });
-}
-
-/* ============ COTIZACIÓN RÁPIDA DE NEGOCIOS (cotizacion.html) ============ */
-const businessQuoteForm = document.getElementById('businessQuoteForm');
-if (businessQuoteForm && typeof CONFIG !== 'undefined' && CONFIG.businessServices) {
-  const checkboxWrap = document.getElementById('businessQuoteCheckboxes');
-  CONFIG.businessServices.forEach(s => {
-    const label = document.createElement('label');
-    label.className = 'flex items-center gap-3 rounded-2xl border border-bone/15 px-4 py-3 text-sm cursor-pointer hover:border-bone/40 transition-colors';
-    label.innerHTML = `<input type="checkbox" value="${s.title} (${s.price})" class="w-4 h-4 accent-bone shrink-0"><span>${s.title} <span class="text-bone/40">— ${s.price}</span></span>`;
-    checkboxWrap.appendChild(label);
-  });
-  const paqueteLabel = document.createElement('label');
-  paqueteLabel.className = 'flex items-center gap-3 rounded-2xl border border-bone/15 px-4 py-3 text-sm cursor-pointer hover:border-bone/40 transition-colors';
-  paqueteLabel.innerHTML = `<input type="checkbox" value="Un paquete completo (Emprendedor / Negocio / Premium)" class="w-4 h-4 accent-bone shrink-0"><span>Un paquete completo <span class="text-bone/40">— ver precios.html</span></span>`;
-  checkboxWrap.appendChild(paqueteLabel);
-
-  businessQuoteForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-    const checked = Array.prototype.slice.call(checkboxWrap.querySelectorAll('input:checked')).map(cb => cb.value);
-    const nombre = document.getElementById('qNombre').value.trim();
-    const negocio = document.getElementById('qNegocio').value.trim();
-    const detalle = document.getElementById('qDetalle').value.trim();
-
-    let texto = `Hola, soy ${nombre}${negocio ? ' (' + negocio + ')' : ''}. `;
-    texto += checked.length ? `Me interesa cotizar: ${checked.join(', ')}. ` : 'Quisiera una cotización para mi negocio. ';
-    if (detalle) texto += detalle;
-
+  businessPackagesGrid.addEventListener('click', (e) => {
+    const btn = e.target.closest('.business-quote-btn');
+    if (!btn) return;
+    const texto = `Hola, quiero cotizar: ${btn.dataset.service}`;
     window.open(`https://wa.me/50670166631?text=${encodeURIComponent(texto)}`, '_blank');
   });
 }
+
 
 /* ============ SERVICE WIZARD (servicios.html) ============ */
 const serviceWizardModal = document.getElementById('serviceWizardModal');

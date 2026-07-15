@@ -16,9 +16,10 @@ archivo → ícono de basura → Commit changes):
   ❌ INTEGRACION-EMPRESAS.md
   ❌ LEEME-PRIMERO.txt
 
-  ⚠️ Antes de borrar empresas/img/foto-1.jpg, guardala en tu compu —
-  es la única foto real de negocio que subiste. La vas a volver a
-  subir después, pero con el nombre "negocio-1.jpg" (ver Paso 3).
+  ⚠️ Antes de borrar empresas/img/, guardá en tu compu las 8 fotos
+  (foto-1.jpg a foto-8.jpg) — las vas a volver a subir, con esos
+  MISMOS nombres, pero ahora en tu img/ de siempre (raíz), junto a
+  las fotos de música. No hace falta renombrar nada (ver Paso 3).
 
 PASO 2 — SUBIR estos archivos (Add file → Upload files)
 ------------------------------------------------------
@@ -39,16 +40,17 @@ para-empresas.html.
 
 PASO 3 — Fotos de negocio en img/ (raíz, junto a las de música)
 ------------------------------------------------------------------
-Van sueltas en tu img/ de siempre (nada de carpeta aparte), con
-estos nombres exactos — los usa el portafolio de para-empresas.html:
+Subí tus 8 fotos (las que ya tenés en tu compu) directo a tu carpeta
+img/ de siempre — CON EL MISMO NOMBRE que ya tienen, no hace falta
+renombrar nada:
 
-  negocio-1.jpg   ← esta es la que ya tenías como "foto-1.jpg",
-                     solo renombrala
-  negocio-2.jpg  negocio-3.jpg  negocio-4.jpg  negocio-5.jpg
-  negocio-6.jpg  negocio-7.jpg  negocio-8.jpg
+  foto-1.jpg   foto-2.jpg   foto-3.jpg   foto-4.jpg
+  foto-5.jpg   foto-6.jpg   foto-7.jpg   foto-8.jpg
 
-Mientras no subas alguna, se ve una cajita gris que dice "Falta
-imagen: negocio-N.jpg" en esa foto — no rompe nada.
+Ya revisé que esos nombres no chocan con ninguna foto del sitio de
+música (las de música usan otros nombres como PORTAFOLIO-7.jpg,
+FOTOGRAFIA-1.jpg, etc.) — podés subirlas todas juntas en el mismo
+img/ sin problema.
 
 QUÉ CAMBIÓ, EN RESUMEN
 -----------------------
@@ -59,7 +61,8 @@ QUÉ CAMBIÓ, EN RESUMEN
 - para-empresas.html tiene, todo en una sola página, con el mismo
   estilo oscuro de B House:
     1. Misión / cómo trabajamos / con quién trabajamos
-    2. Portafolio propio con tus 8 fotos de negocio
+    2. Portafolio propio con tus 8 fotos de negocio (foto-1.jpg a
+       foto-8.jpg, tal cual ya las tenés)
     3. Menú a la carta: los 11 servicios agrupados (Video,
        Fotografía, Redes sociales, Diseño), cada uno con su
        propio botón "Cotizar" que abre WhatsApp con ese servicio
