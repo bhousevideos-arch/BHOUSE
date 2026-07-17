@@ -731,6 +731,7 @@ if (bookingForm && serviceTypeBtns.length) {
   const accCounterEl = document.getElementById('accCounter');
   const accWarnEl = document.getElementById('accWarn');
   const horaSelect = document.getElementById('horaSelect');
+  const horaButtonsWrap = document.getElementById('horaButtons');
   const fechaInput = document.getElementById('fechaInput');
   const accContainer = document.getElementById('accContainer');
   const audioFields = document.getElementById('audioFields');
@@ -799,45 +800,54 @@ if (bookingForm && serviceTypeBtns.length) {
     }
   }
 
-  function fillAudioHoraOptions(open, lastStart, duration, dateStr, preserve) {
+  function renderHoraButtons(labels, preserve, emptyMsg) {
     const prevValue = preserve ? horaSelect.value : ''; // solo se recuerda si preserve=true (fetch en segundo plano)
-    horaSelect.innerHTML = '';
+    horaButtonsWrap.innerHTML = '';
+    if (!labels.length) {
+      horaButtonsWrap.innerHTML = `<span class="text-bone/40 text-xs">${emptyMsg}</span>`;
+      horaSelect.value = '';
+      return;
+    }
+    let matched = false;
+    labels.forEach(label => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = label;
+      btn.className = 'hora-btn rounded-lg border border-bone/15 px-3 py-2 text-sm font-mono transition-colors';
+      if (preserve && label === prevValue) { btn.classList.add('bg-bone', 'text-ink'); matched = true; }
+      btn.addEventListener('click', () => {
+        horaSelect.value = label;
+        horaButtonsWrap.querySelectorAll('.hora-btn').forEach(b => b.classList.remove('bg-bone', 'text-ink'));
+        btn.classList.add('bg-bone', 'text-ink');
+      });
+      horaButtonsWrap.appendChild(btn);
+    });
+    horaSelect.value = matched ? prevValue : '';
+  }
+
+  function fillAudioHoraOptions(open, lastStart, duration, dateStr, preserve) {
     const ranges = bookedData.audioRanges[dateStr] || [];
-    let any = false;
-    let stillValid = false;
+    const labels = [];
     for (let h = open; h <= lastStart; h++) {
       const end = h + duration;
       // se bloquea si la sesión candidata cae dentro de una reserva ya hecha, o dentro
       // del descanso de AUDIO_REST_HOURS antes/después de esa reserva
       const overlaps = ranges.some(r => h < (r.end + AUDIO_REST_HOURS) && end > (r.start - AUDIO_REST_HOURS));
       if (overlaps) continue;
-      any = true;
-      const label = (h < 10 ? '0' + h : h) + ':00';
-      horaSelect.insertAdjacentHTML('beforeend', `<option value="${label}">${label}</option>`);
-      if (preserve && label === prevValue) stillValid = true;
+      labels.push((h < 10 ? '0' + h : h) + ':00');
     }
-    if (!any) horaSelect.innerHTML = '<option value="">Sin horas disponibles ese día — probá otra fecha</option>';
-    else if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido (solo si preserve=true)
+    renderHoraButtons(labels, preserve, 'Sin horas disponibles ese día — probá otra fecha');
   }
 
   function fillHoraOptions(open, close, preserve) {
-    const prevValue = preserve ? horaSelect.value : ''; // solo se recuerda si preserve=true (fetch en segundo plano)
-    horaSelect.innerHTML = '';
-    if (open > close) {
-      horaSelect.innerHTML = '<option value="">No disponible ese día</option>';
-      return;
-    }
-    let stillValid = false;
-    for (let h = open; h <= close; h++) {
-      const label = (h < 10 ? '0' + h : h) + ':00';
-      horaSelect.insertAdjacentHTML('beforeend', `<option value="${label}">${label}</option>`);
-      if (preserve && label === prevValue) stillValid = true;
-    }
-    if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido (solo si preserve=true)
+    if (open > close) { renderHoraButtons([], preserve, 'No disponible ese día'); return; }
+    const labels = [];
+    for (let h = open; h <= close; h++) labels.push((h < 10 ? '0' + h : h) + ':00');
+    renderHoraButtons(labels, preserve, 'No disponible ese día');
   }
 
   function populateHoraSelect(preserve) {
-    if (!selectedDateObj) { horaSelect.innerHTML = '<option value="">Elegí fecha primero</option>'; return; }
+    if (!selectedDateObj) { horaButtonsWrap.innerHTML = '<span class="text-bone/40 text-xs">Elegí fecha primero</span>'; horaSelect.value = ''; return; }
     if (serviceType === 'video') {
       const duration = PKG_DURATION[selectedFormPkg] || 1;
       const lastStart = Math.min(17, 22 - duration);
@@ -922,7 +932,8 @@ if (bookingForm && serviceTypeBtns.length) {
     selectedDateObj = null;
     fechaInput.value = '';
     if (fp) fp.clear();
-    horaSelect.innerHTML = '<option value="">Elegí fecha primero</option>';
+    horaButtonsWrap.innerHTML = '<span class="text-bone/40 text-xs">Elegí fecha primero</span>';
+    horaSelect.value = '';
     dateTimeFields.classList.remove('opacity-40','pointer-events-none');
   }
   serviceTypeBtns.forEach(btn => btn.addEventListener('click', () => selectServiceType(btn.dataset.type)));
