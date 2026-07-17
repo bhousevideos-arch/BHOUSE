@@ -319,7 +319,7 @@ const CONFIG = {
   */
   bookingsRepo: {
     repoOwner: 'bhousevideos-arch',
-    repoName: 'B-house-music',
+    repoName: 'BHOUSE',
   },
   /* ========================================================
      PREMIOS B HOUSE — sistema de puntaje (redes + jueces)
