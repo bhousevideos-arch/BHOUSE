@@ -787,7 +787,7 @@ if (bookingForm && serviceTypeBtns.length) {
       });
     } catch (e) { /* si falla, el calendario sigue funcionando sin bloqueo en vivo */ }
     applyCalendarDisable();
-    if (selectedDateObj) populateHoraSelect();
+    if (selectedDateObj) populateHoraSelect(true); // true = preservar la hora ya elegida
   }
 
   function applyCalendarDisable() {
@@ -799,8 +799,8 @@ if (bookingForm && serviceTypeBtns.length) {
     }
   }
 
-  function fillAudioHoraOptions(open, lastStart, duration, dateStr) {
-    const prevValue = horaSelect.value; // recordar lo que ya había elegido la persona
+  function fillAudioHoraOptions(open, lastStart, duration, dateStr, preserve) {
+    const prevValue = preserve ? horaSelect.value : ''; // solo se recuerda si preserve=true (fetch en segundo plano)
     horaSelect.innerHTML = '';
     const ranges = bookedData.audioRanges[dateStr] || [];
     let any = false;
@@ -814,14 +814,14 @@ if (bookingForm && serviceTypeBtns.length) {
       any = true;
       const label = (h < 10 ? '0' + h : h) + ':00';
       horaSelect.insertAdjacentHTML('beforeend', `<option value="${label}">${label}</option>`);
-      if (label === prevValue) stillValid = true;
+      if (preserve && label === prevValue) stillValid = true;
     }
     if (!any) horaSelect.innerHTML = '<option value="">Sin horas disponibles ese día — probá otra fecha</option>';
-    else if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido
+    else if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido (solo si preserve=true)
   }
 
-  function fillHoraOptions(open, close) {
-    const prevValue = horaSelect.value; // recordar lo que ya había elegido la persona
+  function fillHoraOptions(open, close, preserve) {
+    const prevValue = preserve ? horaSelect.value : ''; // solo se recuerda si preserve=true (fetch en segundo plano)
     horaSelect.innerHTML = '';
     if (open > close) {
       horaSelect.innerHTML = '<option value="">No disponible ese día</option>';
@@ -831,23 +831,23 @@ if (bookingForm && serviceTypeBtns.length) {
     for (let h = open; h <= close; h++) {
       const label = (h < 10 ? '0' + h : h) + ':00';
       horaSelect.insertAdjacentHTML('beforeend', `<option value="${label}">${label}</option>`);
-      if (label === prevValue) stillValid = true;
+      if (preserve && label === prevValue) stillValid = true;
     }
-    if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido
+    if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido (solo si preserve=true)
   }
 
-  function populateHoraSelect() {
+  function populateHoraSelect(preserve) {
     if (!selectedDateObj) { horaSelect.innerHTML = '<option value="">Elegí fecha primero</option>'; return; }
     if (serviceType === 'video') {
       const duration = PKG_DURATION[selectedFormPkg] || 1;
       const lastStart = Math.min(17, 22 - duration);
-      fillHoraOptions(10, lastStart);
+      fillHoraOptions(10, lastStart, preserve);
     } else if (serviceType === 'audio') {
       const isWeekend = selectedDateObj.getDay() === 0 || selectedDateObj.getDay() === 6;
       const win = isWeekend ? AUDIO_WINDOW.weekend : AUDIO_WINDOW.weekday;
       const duration = +audioHoursSlider.value;
       const lastStart = win.close - duration;
-      fillAudioHoraOptions(win.open, lastStart, duration, formatDateStr(selectedDateObj));
+      fillAudioHoraOptions(win.open, lastStart, duration, formatDateStr(selectedDateObj), preserve);
     }
   }
 
