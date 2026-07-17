@@ -395,16 +395,9 @@
       <p class="text-bone/50 mt-4 max-w-lg">Elegí el tipo de servicio, la fecha y la hora. Al enviar, te llevamos a WhatsApp con todo listo para confirmar.</p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-6">
-      <!-- Calendar -->
-      <div class="reveal rounded-3xl border border-bone/15 p-6 md:p-8">
-        <p class="font-mono text-xs uppercase tracking-[0.25em] text-bone/50 mb-4">Elegí una fecha disponible</p>
-        <div id="bookingCalendar"></div>
-        <p id="calendarNote" class="text-bone/40 text-xs mt-4">Elegí primero el tipo de servicio para ver los días disponibles. Una fecha marcada aquí queda <strong class="text-bone/70">pendiente</strong> hasta que la confirmemos por WhatsApp — nadie te bloquea el día sin avisarte.</p>
-      </div>
-
-      <!-- Form -->
-      <form id="bookingForm" class="reveal rounded-3xl border border-bone/15 p-6 md:p-8 space-y-5">
+    <form id="bookingForm" class="booking-grid gap-6">
+      <!-- 1. Datos de contacto (primero en móvil) -->
+      <div class="booking-info reveal rounded-3xl border border-bone/15 p-6 md:p-8">
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="font-mono text-xs uppercase tracking-widest text-bone/50">Nombre</label>
@@ -415,7 +408,10 @@
             <input name="contacto" required class="w-full bg-transparent border-b border-bone/20 py-2.5 mt-1 outline-none focus:border-bone transition-colors" placeholder="8888-8888">
           </div>
         </div>
+      </div>
 
+      <!-- 2. Tipo de servicio + detalles (segundo en móvil, antes del calendario) -->
+      <div class="booking-service reveal rounded-3xl border border-bone/15 p-6 md:p-8 space-y-5">
         <div>
           <label class="font-mono text-xs uppercase tracking-widest text-bone/50 mb-2 block">1. Tipo de servicio</label>
           <div class="grid grid-cols-2 gap-2" id="serviceTypeSelector">
@@ -466,7 +462,17 @@
             <p id="accWarn" class="text-xs text-amber-300 mt-2 hidden"></p>
           </div>
         </div>
+      </div>
 
+      <!-- 3. Calendario (tercero en móvil, ya con tipo de servicio elegido) -->
+      <div class="booking-calendar reveal rounded-3xl border border-bone/15 p-6 md:p-8">
+        <p class="font-mono text-xs uppercase tracking-[0.25em] text-bone/50 mb-4">Elegí una fecha disponible</p>
+        <div id="bookingCalendar"></div>
+        <p id="calendarNote" class="text-bone/40 text-xs mt-4">Elegí primero el tipo de servicio para ver los días disponibles. Una fecha marcada aquí queda <strong class="text-bone/70">pendiente</strong> hasta que la confirmemos por WhatsApp — nadie te bloquea el día sin avisarte.</p>
+      </div>
+
+      <!-- 4. Fecha/hora confirmadas + términos + envío (último en móvil) -->
+      <div class="booking-datetime reveal rounded-3xl border border-bone/15 p-6 md:p-8 space-y-5">
         <div id="dateTimeFields" class="grid grid-cols-2 gap-4 opacity-40 pointer-events-none transition-opacity">
           <div>
             <label class="font-mono text-xs uppercase tracking-widest text-bone/50">3. Fecha elegida</label>
@@ -497,8 +503,8 @@
           <a href="https://wa.me/50670166631?text=Hola%2C%20quiero%20cotizar%20un%20proyecto%20personalizado%20de%20m%C3%A1s%20de%205%20horas%20o%20varios%20d%C3%ADas" target="_blank" rel="noopener"
              class="rounded-full border border-bone/30 px-6 py-4 text-sm font-semibold text-center hover:border-bone transition-colors">Proyecto personalizado</a>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </section>
 
