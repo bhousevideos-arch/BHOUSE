@@ -752,6 +752,7 @@ if (bookingForm && serviceTypeBtns.length) {
     weekend: { open: 9, close: 17 },   // Sáb–Dom 9am–5pm
   };
   const AUDIO_RATE = 15000;
+  const AUDIO_REST_HOURS = 1; // descanso obligatorio antes y después de cada sesión de audio ya reservada
 
   /* ============ RESERVAS EN TIEMPO REAL (vía GitHub, ver config.js → bookingsRepo) ============ */
   const bookedData = { videoDates: new Set(), audioRanges: {} }; // audioRanges: {'YYYY-MM-DD': [{start,end}, ...]}
@@ -799,30 +800,40 @@ if (bookingForm && serviceTypeBtns.length) {
   }
 
   function fillAudioHoraOptions(open, lastStart, duration, dateStr) {
+    const prevValue = horaSelect.value; // recordar lo que ya había elegido la persona
     horaSelect.innerHTML = '';
     const ranges = bookedData.audioRanges[dateStr] || [];
     let any = false;
+    let stillValid = false;
     for (let h = open; h <= lastStart; h++) {
       const end = h + duration;
-      const overlaps = ranges.some(r => h < r.end && end > r.start);
+      // se bloquea si la sesión candidata cae dentro de una reserva ya hecha, o dentro
+      // del descanso de AUDIO_REST_HOURS antes/después de esa reserva
+      const overlaps = ranges.some(r => h < (r.end + AUDIO_REST_HOURS) && end > (r.start - AUDIO_REST_HOURS));
       if (overlaps) continue;
       any = true;
       const label = (h < 10 ? '0' + h : h) + ':00';
       horaSelect.insertAdjacentHTML('beforeend', `<option value="${label}">${label}</option>`);
+      if (label === prevValue) stillValid = true;
     }
     if (!any) horaSelect.innerHTML = '<option value="">Sin horas disponibles ese día — probá otra fecha</option>';
+    else if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido
   }
 
   function fillHoraOptions(open, close) {
+    const prevValue = horaSelect.value; // recordar lo que ya había elegido la persona
     horaSelect.innerHTML = '';
     if (open > close) {
       horaSelect.innerHTML = '<option value="">No disponible ese día</option>';
       return;
     }
+    let stillValid = false;
     for (let h = open; h <= close; h++) {
       const label = (h < 10 ? '0' + h : h) + ':00';
       horaSelect.insertAdjacentHTML('beforeend', `<option value="${label}">${label}</option>`);
+      if (label === prevValue) stillValid = true;
     }
+    if (stillValid) horaSelect.value = prevValue; // no perder la hora que ya había elegido
   }
 
   function populateHoraSelect() {

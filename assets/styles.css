@@ -188,3 +188,29 @@
     margin-top:14px;
   }
 
+  /* Agenda: en móvil se ve primero "datos + tipo de servicio", luego el calendario,
+     y al final fecha/hora + términos. En desktop vuelve al layout de 2 columnas
+     (calendario a la izquierda ocupando toda la altura, resto apilado a la derecha). */
+  .booking-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "info"
+      "service"
+      "calendar"
+      "datetime";
+  }
+  .booking-info{grid-area:info;}
+  .booking-service{grid-area:service;}
+  .booking-calendar{grid-area:calendar;}
+  .booking-datetime{grid-area:datetime;}
+  @media (min-width:1024px){
+    .booking-grid{
+      grid-template-columns:1fr 1fr;
+      grid-template-areas:
+        "calendar info"
+        "calendar service"
+        "calendar datetime";
+    }
+  }
+
