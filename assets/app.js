@@ -804,7 +804,7 @@ if (bookingForm && serviceTypeBtns.length) {
     const prevValue = preserve ? horaSelect.value : ''; // solo se recuerda si preserve=true (fetch en segundo plano)
     horaButtonsWrap.innerHTML = '';
     if (!labels.length) {
-      horaButtonsWrap.innerHTML = `<span class="text-bone/40 text-xs">${emptyMsg}</span>`;
+      horaButtonsWrap.innerHTML = `<span class="col-span-3 text-bone/40 text-xs">${emptyMsg}</span>`;
       horaSelect.value = '';
       return;
     }
@@ -813,7 +813,7 @@ if (bookingForm && serviceTypeBtns.length) {
       const btn = document.createElement('button');
       btn.type = 'button';
       btn.textContent = label;
-      btn.className = 'hora-btn rounded-lg border border-bone/15 px-3 py-2 text-sm font-mono transition-colors';
+      btn.className = 'hora-btn rounded-xl border border-bone/15 py-3 text-sm font-semibold text-center transition-colors select-none';
       if (preserve && label === prevValue) { btn.classList.add('bg-bone', 'text-ink'); matched = true; }
       btn.addEventListener('click', () => {
         horaSelect.value = label;
@@ -847,7 +847,7 @@ if (bookingForm && serviceTypeBtns.length) {
   }
 
   function populateHoraSelect(preserve) {
-    if (!selectedDateObj) { horaButtonsWrap.innerHTML = '<span class="text-bone/40 text-xs">Elegí fecha primero</span>'; horaSelect.value = ''; return; }
+    if (!selectedDateObj) { horaButtonsWrap.innerHTML = '<span class="col-span-3 text-bone/40 text-xs">Elegí fecha primero</span>'; horaSelect.value = ''; return; }
     if (serviceType === 'video') {
       const duration = PKG_DURATION[selectedFormPkg] || 1;
       const lastStart = Math.min(17, 22 - duration);
@@ -932,7 +932,7 @@ if (bookingForm && serviceTypeBtns.length) {
     selectedDateObj = null;
     fechaInput.value = '';
     if (fp) fp.clear();
-    horaButtonsWrap.innerHTML = '<span class="text-bone/40 text-xs">Elegí fecha primero</span>';
+    horaButtonsWrap.innerHTML = '<span class="col-span-3 text-bone/40 text-xs">Elegí fecha primero</span>';
     horaSelect.value = '';
     dateTimeFields.classList.remove('opacity-40','pointer-events-none');
   }
