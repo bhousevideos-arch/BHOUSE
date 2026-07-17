@@ -208,9 +208,9 @@
     .booking-grid{
       grid-template-columns:1fr 1fr;
       grid-template-areas:
-        "calendar info"
-        "calendar service"
-        "calendar datetime";
+        "info calendar"
+        "service calendar"
+        "datetime calendar";
     }
   }
   /* El calendario de flatpickr tiene un ancho fijo angosto — se centra dentro de su
