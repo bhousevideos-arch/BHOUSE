@@ -11,10 +11,17 @@ function fileExists(url) {
     .catch(() => null);
 }
 function discoverPhotos(prefix, folder, exts, max) {
+  // Prueba cada extensión en minúscula Y en mayúscula (ej. .jpg y .JPG), porque
+  // GitHub Pages distingue mayúsculas/minúsculas en los nombres de archivo.
+  const allExts = [];
+  exts.forEach(ext => {
+    if (!allExts.includes(ext.toLowerCase())) allExts.push(ext.toLowerCase());
+    if (!allExts.includes(ext.toUpperCase())) allExts.push(ext.toUpperCase());
+  });
   const checks = [];
   for (let i = 1; i <= max; i++) {
     let attempt = Promise.resolve(null);
-    exts.forEach(ext => {
+    allExts.forEach(ext => {
       attempt = attempt.then(found => found || fileExists(`${folder}/${prefix}${i}.${ext}`));
     });
     checks.push(attempt.then(url => (url ? { index: i, img: url } : null)));
@@ -121,7 +128,7 @@ if (businessPortfolioGrid) {
       businessPortfolioGrid.innerHTML = `<p class="col-span-full text-bone/40 text-sm font-mono">Todavía no hay fotos. Subí archivos a <code>img/</code> con el nombre <code>foto-1.jpg</code>, <code>foto-2.jpg</code>… y van a aparecer solas acá.</p>`;
       return;
     }
-    found.forEach(f => {
+    shuffleArray(found).forEach(f => {
       const item = { title: `Fotografía comercial — Negocio ${f.index}`, img: f.img, desc: '' };
       const div = document.createElement('div');
       div.className = 'reveal in polaroid cursor-pointer';
