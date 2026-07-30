@@ -7,10 +7,11 @@ const CONFIG = {
   ],
   // Videos de negocio — se muestran en el portafolio de para-empresas.html
   businessVideos: [
-    {title:'Video para negocio 1', youtube:'Q5bO_d5OuhY'},
-    {title:'Video para negocio 2', youtube:'MrUvydp6RV4'},
-    {title:'Video para negocio 3', youtube:'da2oykOusiQ'},
-    {title:'Video para negocio 4', youtube:'PWS6YjhRWFM'},
+    {title:'Video para negocio 1', youtube:'cAX-u04FGKY'},
+    {title:'Video para negocio 2', youtube:'Q5bO_d5OuhY'},
+    {title:'Video para negocio 3', youtube:'MrUvydp6RV4'},
+    {title:'Video para negocio 4', youtube:'da2oykOusiQ'},
+    {title:'Video para negocio 5', youtube:'PWS6YjhRWFM'},
   ],
   // Fotos de negocio: se detectan solas desde img/foto-1.jpg, foto-2.jpg... (ver assets/app.js, discoverPhotos)
   // No hace falta editar nada acá — subí la foto con el nombre correcto y aparece.
