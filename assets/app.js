@@ -11,18 +11,26 @@ function fileExists(url) {
     .catch(() => null);
 }
 function discoverPhotos(prefix, folder, exts, max) {
-  // Prueba cada extensión en minúscula Y en mayúscula (ej. .jpg y .JPG), porque
-  // GitHub Pages distingue mayúsculas/minúsculas en los nombres de archivo.
+  // Prueba cada extensión en minúscula Y en mayúscula (ej. .jpg y .JPG), y el
+  // prefijo tanto en minúscula como con la primera letra en mayúscula (ej.
+  // "foto-" y "Foto-"), porque GitHub Pages distingue mayúsculas/minúsculas
+  // en los nombres de archivo y es fácil que a alguien se le vaya con
+  // mayúscula sin querer al subir la foto.
   const allExts = [];
   exts.forEach(ext => {
     if (!allExts.includes(ext.toLowerCase())) allExts.push(ext.toLowerCase());
     if (!allExts.includes(ext.toUpperCase())) allExts.push(ext.toUpperCase());
   });
+  const prefixLower = prefix.toLowerCase();
+  const prefixCap = prefixLower.charAt(0).toUpperCase() + prefixLower.slice(1);
+  const allPrefixes = [...new Set([prefixLower, prefixCap])];
   const checks = [];
   for (let i = 1; i <= max; i++) {
     let attempt = Promise.resolve(null);
-    allExts.forEach(ext => {
-      attempt = attempt.then(found => found || fileExists(`${folder}/${prefix}${i}.${ext}`));
+    allPrefixes.forEach(pfx => {
+      allExts.forEach(ext => {
+        attempt = attempt.then(found => found || fileExists(`${folder}/${pfx}${i}.${ext}`));
+      });
     });
     checks.push(attempt.then(url => (url ? { index: i, img: url } : null)));
   }
